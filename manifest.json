@@ -1,0 +1,19 @@
+{
+	"name": "Morphine",
+	"version": "1.0.0",
+	"description": "YAY ADDICTION",
+	"icons": {
+		"16": "icons/16.png",
+		"48": "icons/48.png",
+		"128": "icons/128.png"
+	},
+	"browser_action": {
+		"default_icon": "icons/19.png",
+		"default_title": "Morphine",
+		"default_popup": "popup.html"
+	},
+	"background_page": "background.html",
+	"offline_enabled": true,
+	"options_page": "options.html",
+	"permissions": ["webNavigation"]
+}
