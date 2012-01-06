@@ -1,12 +1,20 @@
 (function(){
 "use strict";
 
-chrome.webNavigation.onCommitted.addListener(function(details){
-	if (details.frameId === 0 && details.url.indexOf("reddit.com") !== -1) {
-		chrome.tabs.update(details.tabId, {
+chrome.tabs.onCreated.addListener(function(tab){
+	tab.url && handle(tab.id, tab.url);
+});
+
+chrome.tabs.onUpdated.addListener(function(tID, changed, tab){
+	changed.url && handle(tID, changed.url);
+});
+
+var handle = function(tID, url){
+	if (url.indexOf("reddit.com") !== -1) {
+		chrome.tabs.update(tID, {
 			url: "nope.webm"
 		});
 	}
-});
+};
 
 })();

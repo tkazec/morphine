@@ -15,5 +15,5 @@
 	"background_page": "background.html",
 	"offline_enabled": true,
 	"options_page": "options.html",
-	"permissions": ["webNavigation"]
+	"permissions": ["tabs"]
 }
