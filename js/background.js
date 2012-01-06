@@ -17,4 +17,8 @@ var handle = function(tID, url){
 	}
 };
 
+chrome.browserAction.setBadgeBackgroundColor({
+	color: [0, 60, 255, 255]
+});
+
 })();
