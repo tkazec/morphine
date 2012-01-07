@@ -9,4 +9,8 @@ $("#activate-morphine").click(function(){
 	this.blur();
 });
 
+$("#activate-options").click(function(){
+	window.open("options.html");
+});
+
 })();

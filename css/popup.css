@@ -27,6 +27,15 @@ button:active {
 	width: 200px;
 }
 
+#activate-options {
+	background: url("../icons/gear.png") no-repeat;
+	height: 48px;
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	width: 48px;
+}
+
 #activate-uber {
 	background-color: #F00;
 	bottom: 3px;
