@@ -5,8 +5,13 @@ $("#activate-morphine").click(function(){
 	chrome.browserAction.setBadgeText({
 		text: "15"
 	});
-}).one("focus", function(){
-	this.blur();
+});
+
+
+$("body").on("focus", "button", function(){
+	this.blur()
+	
+	$("body").off("focus", "button");
 });
 
 $("#activate-options").click(function(){
