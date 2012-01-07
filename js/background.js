@@ -9,16 +9,16 @@ var check = function(url, tID){
 	var block = JSON.parse(localStorage.blocked),
 		allow = JSON.parse(localStorage.allowed);
 	
-	var matches = block.some(function(rule){
+	var apply = function(url, rule){
 		var index = url.indexOf(rule);
 		
-		if (index !== -1 && index === url.length - rule.length) {
+		return index !== -1 && index === url.length - rule.length && (index > 0 ? url[index - 1] === "." : true);
+	};
+	
+	var matches = block.some(function(rule){
+		if (apply(url, rule)) {
 			var allowed = allow.some(function(rule){
-				var index = url.indexOf(rule);
-				
-				if (index !== -1 && index === url.length - rule.length) {
-					return true;
-				}
+				return apply(url, rule);
 			});
 			
 			if (!allowed) {
