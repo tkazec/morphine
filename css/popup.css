@@ -28,12 +28,15 @@ button:active {
 }
 
 #activate-options {
-	background: url("../icons/gear.png") no-repeat;
+	background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0)), url("../icons/gear.png") no-repeat;
 	height: 48px;
 	position: absolute;
 	right: 10px;
 	top: 10px;
 	width: 48px;
+}
+#activate-options:active {
+	background: url("../icons/gear.png") no-repeat;
 }
 
 #activate-uber {

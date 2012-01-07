@@ -45,16 +45,16 @@
      bordercolor="#666666"
      pagecolor="#ffffff"
      id="base"
-     inkscape:zoom="6.359375"
-     inkscape:cx="-6.4186008"
-     inkscape:cy="26.425389"
+     inkscape:zoom="9.9289577"
+     inkscape:cx="24"
+     inkscape:cy="24"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:current-layer="svg1872"
      showgrid="true"
      width="48px"
      height="48px"
-     inkscape:window-maximized="1" />
+     inkscape:window-maximized="0" />
   <defs
      id="defs1874">
     <linearGradient
@@ -120,27 +120,4 @@
      sodipodi:ry="1.022113"
      d="m 8.8845207,8.1769037 a 0.90417689,1.022113 0 1 1 -1.8083538,0 0.90417689,1.022113 0 1 1 1.8083538,0 z"
      transform="matrix(4.5796274,0,0,4.0347837,-12.16668,-8.7460607)" />
-  <g
-     id="g2901"
-     transform="matrix(3.3932944,0,0,3.3932521,-2.9972139,-3.1855834)">
-    <rect
-       transform="matrix(0.963005,-0.269485,0.269485,0.963005,0,0)"
-       y="7.4712706"
-       x="1.8729681"
-       height="3.3571696"
-       width="5.4196706"
-       id="rect2942"
-       style="fill:none;stroke:none" />
-    <g
-       transform="translate(0.0412207,0.0747524)"
-       id="layer1"
-       inkscape:label="Layer 1">
-      <path
-         inkscape:connector-curvature="0"
-         style="fill:url(#linearGradient3770);fill-opacity:1;fill-rule:evenodd;stroke:none"
-         d="m 7.9427597,0.86404707 c -3.90417,0 -7.09375001,3.13599843 -7.09375001,7.00000003 0,0.2217652 0.014487,0.5436345 0.034901,0.7601485 C 1.3397607,8.3659402 1.7383699,8.0386301 2.2682039,7.8091296 3.7929949,7.1486588 5.5835057,6.4835094 7.5990097,6.1140471 9.6145137,5.7445847 11.805164,5.551547 14.13026,5.551547 c 0.143826,0 0.263282,0.029695 0.40625,0.03125 C 13.570792,2.8541184 11.028181,0.86404707 7.9427597,0.86404707 z"
-         id="path2394"
-         sodipodi:nodetypes="cscssscc" />
-    </g>
-  </g>
 </svg>
