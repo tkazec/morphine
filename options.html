@@ -3,10 +3,83 @@
 	<head>
 		<meta charset="utf8">
 		<title>Morphine</title>
-		<link rel="stylesheet" href="css/html5-reset.css">
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/bootstrap.css">
 		<link rel="stylesheet" href="css/options.css">
 	</head>
 	<body>
+		<div class="container">
+			<h2>Refilling</h2>
+			<div class="row">
+				<div class="span6">
+					<p>Set the optimal minutes balance refill schedule for you! Blah.</p>
+				</div>
+				<div class="span6">
+					
+					<!--<strong>Refill interval</strong> (<output for="refill-interval">10 minutes between refills</output>)<br>
+					<input type="range" id="refill-interval" min="10" max="60" step="5"><br><br>
+					
+					<strong>Refill quantity</strong> (<output for="refill-quantity">2′ per refill</output>)<br>
+					<input type="range" id="refill-quantity" min="1" max="12" step="1"><br><br>
+					
+					<output for="refill-interval refill-quantity">1-(2*(i/10))</output>-->
+				</div>
+			</div>
+			
+			<h2>Filtering</h2>
+			<div class="row">
+				<div class="span6">
+					<p>Add domains to block and (optionally) allow, one per line. Enter the domain only, so no slashes and stuff. For example, <code>reddit.com</code> is accepted, but <code>http://reddit.com/</code> isn't.</p>
+					
+					<p>Subdomains are accepted, and if not provided will be wildcarded. The allowed domains override the blocked domains and can be used to allow specific subdomains.</p>
+				</div>
+				
+				<div class="span6">
+					<div class="row">
+						<div class="span3">
+							<label for="filter-block">Blocked domains</label>
+							<textarea id="filter-block"></textarea>
+						</div>
+						
+						<div class="span3">
+							<label for="filter-allow">Allowed domains</label>
+							<textarea id="filter-allow"></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<h2>Blocking</h2>
+			<div class="row">
+				<div class="span6">
+					<p>Morphine's default "blocked!" page is the lovely <a href="http://www.youtube.com/watch?v=gvdf5n-zI14">nope.avi</a>. Not a fan? Set it to the popup page, which lets you instantly add to the balance and load the original destination. Or, enter your very own custom URL (can be a local file), but beware of infinite loops!</p>
+				</div>
+				
+				<div class="span6">
+					<label class="radio"><input type="radio" name="block" value="nope">nope.avi</label>
+					<label class="radio"><input type="radio" name="block" value="popup">Same as the popup</label>
+					<input type="url" class="span6" placeholder="Custom URL...">
+				</div>
+			</div>
+			
+			<h2>Learning</h2>
+			<h4>Bugging</h4>
+			<p>Having a problem with Morphine? Send all angry emails to <a href="mailto:me@tkaz.ec">me@tkaz.ec</a>.</p>
+			
+			<h4>Developing</h4>
+			<p>If you're a developer and would like to contribute, awesome! Morphine is open source, and can be found <a href="https://github.com/tkazec/morphine">on GitHub</a>.</p>
+			
+			<h4>Living</h4>
+			<p>I'm a 15 year old web &amp; game developer who loves making beautiful, useful, and fun things. Like this extension? Check out my <a href="http://tkaz.ec">other stuff</a>!</p>
+			
+			<h4>Changing</h4>
+			<h5>1.0 <small>2012-01-09</small></h5>
+			<ul>
+				<li>Awesome first release.
+			</ul>
+		</div>
 		
+		<script src="js/jquery.js"></script>
+		<script src="js/options.js"></script>
 	</body>
 </html>
