@@ -1,13 +1,26 @@
 (function(){
 "use strict";
 
+/*** setup ***/
+var version = "1.0";
+
+!Data.has("charge-interval") && Data.set("charge-interval", 10);
+!Data.has("charge-size") && Data.set("charge-size", 1);
+
+!Data.has("target-block") && Data.set("target-block", []);
+!Data.has("target-allow") && Data.set("target-allow", []);
+
+!Data.has("block") && Data.set("block", "<nope.avi>");
+
+
+/*** monitoring ***/
 var check = function(url, tID){
 	if (!((url = url.match(/:\/\/(.+?)\//)) && (url = url[1]))) {
 		return;
 	}
 	
-	var block = JSON.parse(localStorage.blocked),
-		allow = JSON.parse(localStorage.allowed);
+	var block = Data.get("target-block"),
+		allow = Data.get("target-allow");
 	
 	var apply = function(url, rule){
 		var index = url.indexOf(rule);
