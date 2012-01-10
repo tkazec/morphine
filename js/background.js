@@ -40,9 +40,7 @@ var check = function(url, tID){
 		}
 	});
 	
-	matches && chrome.tabs.update(tID, {
-		url: "nope.webm"
-	});
+	matches && slap(tID, url);
 };
 
 chrome.tabs.onCreated.addListener(function(tab){
@@ -53,8 +51,20 @@ chrome.tabs.onUpdated.addListener(function(tID, changed, tab){
 	changed.url && check(changed.url, tID);
 });
 
-chrome.browserAction.setBadgeBackgroundColor({
-	color: [0, 60, 255, 255]
-});
+
+/*** blocking ***/
+var slap = function(tID, orig){
+	var url = Data.get("block");
+	
+	if (url === "<nope.avi>") {
+		url = "nope.webm";
+	} else if (url === "<popup>") {
+		url = "popup.html?" + encodeURIComponent(orig);
+	}
+	
+	chrome.tabs.update(tID, {
+		url: url
+	});
+};
 
 })();
