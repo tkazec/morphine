@@ -9,24 +9,33 @@
 	</head>
 	<body>
 		<div class="container">
-			<h2>Refilling</h2>
+			<div class="alert-message block-message success hidden">
+				<a class="close">&times;</a>
+				<p><strong>Welcome!</strong> It seems that you have successfully installed Morphine. Thanks for checking it out. Please take a minute to review its settings below, and if you're fluent in both English and any other language, consider helping translate it. Have fun!</p>
+			</div>
+			
+			<h2>Charging</h2>
 			<div class="row">
 				<div class="span6">
-					<p>Set the optimal minutes balance refill schedule for you! Blah.</p>
+					<p>Set the optimal minutes balance charge rate for you! With the default settings, +1 minute will be given every 10 minutes, but that can be adjusted for optimal productivity, distraction, and attention span levels.</p>
 				</div>
+				
 				<div class="span6">
-					
-					<!--<strong>Refill interval</strong> (<output for="refill-interval">10 minutes between refills</output>)<br>
-					<input type="range" id="refill-interval" min="10" max="60" step="5"><br><br>
-					
-					<strong>Refill quantity</strong> (<output for="refill-quantity">2′ per refill</output>)<br>
-					<input type="range" id="refill-quantity" min="1" max="12" step="1"><br><br>
-					
-					<output for="refill-interval refill-quantity">1-(2*(i/10))</output>-->
+					<div class="row">
+						<div class="span3">
+							<label for="charge-interval">Interval <output for="charge-interval" class="muted"></output></label>
+							<input type="range" id="charge-interval" min="10" max="60" step="5">
+						</div>
+						
+						<div class="span3">
+							<label for="charge-size">Size <output for="charge-size" class="muted"></output></label>
+							<input type="range" id="charge-size" min="1" max="12" step="1">
+						</div>
+					</div>
 				</div>
 			</div>
 			
-			<h2>Filtering</h2>
+			<h2>Targeting</h2>
 			<div class="row">
 				<div class="span6">
 					<p>Add domains to block and (optionally) allow, one per line. Enter the domain only, so no slashes and stuff. For example, <code>reddit.com</code> is accepted, but <code>http://reddit.com/</code> isn't.</p>
@@ -37,13 +46,13 @@
 				<div class="span6">
 					<div class="row">
 						<div class="span3">
-							<label for="filter-block">Blocked domains</label>
-							<textarea id="filter-block" rows="5"></textarea>
+							<label for="target-block">Blocked domains</label>
+							<textarea id="target-block" rows="5"></textarea>
 						</div>
 						
 						<div class="span3">
-							<label for="filter-allow">Allowed domains</label>
-							<textarea id="filter-allow" rows="5"></textarea>
+							<label for="target-allow">Allowed domains</label>
+							<textarea id="target-allow" rows="5"></textarea>
 						</div>
 					</div>
 				</div>
@@ -52,13 +61,14 @@
 			<h2>Blocking</h2>
 			<div class="row">
 				<div class="span6">
-					<p>Morphine's default "blocked!" page is the lovely <a href="http://www.youtube.com/watch?v=gvdf5n-zI14">nope.avi</a>. Not a fan? Set it to the popup page, which lets you instantly add to the balance and load the original destination. Or, enter your very own custom URL (can be a local file), but beware of infinite loops!</p>
+					<p>Morphine's default "blocked!" page is the lovely <a href="http://www.youtube.com/watch?v=gvdf5n-zI14">nope.avi</a>. Not a fan? Set it to the popup page, which lets you instantly use minutes and load the original destination. Or, enter your very own custom URL (can be a local file), but beware of infinite loops!</p>
 				</div>
 				
 				<div class="span6">
-					<label class="radio"><input type="radio" name="block" value="nope">nope.avi</label>
-					<label class="radio"><input type="radio" name="block" value="popup">Same as the popup</label>
-					<input type="url" class="span6" placeholder="Custom URL...">
+					<label class="radio"><input type="radio" name="block" value="<nope.avi>">nope.avi</label>
+					<label class="radio"><input type="radio" name="block" value="<popup>">Popup page</label>
+					<label class="radio"><input type="radio" name="block" value="custom">Custom URL:</label>
+					<input type="text" id="block-url" class="span6">
 				</div>
 			</div>
 			
@@ -77,22 +87,23 @@
 				
 				<div class="span6">
 					<h4>Translating</h4>
-					<p>Are you fluent in both English and any other language? You can help! The process is simple, whether you're translating a new language or fixing errors in an existing one. All it involves is downloading a list of phrases, then translate and send it back to me.</p>
+					<p>Are you fluent in both English and any other language? You can help! The process is simple, whether you're translating a new language or fixing errors in an existing one. All it involves is downloading a list of phrases, then translating and sending it back to me.</p>
 					
-					<p>However, parts of Morphine use some quirky phrasing... But don't worry! You can translate as much or as little as you want; the default English will be displayed where a translation is lacking.</p>
+					<p>However, parts of Morphine use some quirky phrasing... But don't worry! You can translate as much or as little as you like; the default English will be displayed where a translation is lacking.</p>
 					
-					<p>Ready to get started? Check out the <a>help document</a>.</p>
+					<p>Ready to get started? Check out the <a>instructions</a>!</p>
 				</div>
 			</div>
 			
 			<h4>Changing</h4>
-			<h5>1.0 <small>2012-01-09</small></h5>
+			<h5>1.0 <small>2012-01-10</small></h5>
 			<ul>
 				<li>Awesome first release.
 			</ul>
 		</div>
 		
 		<script src="js/jquery.js"></script>
+		<script src="js/data.js"></script>
 		<script src="js/options.js"></script>
 	</body>
 </html>
