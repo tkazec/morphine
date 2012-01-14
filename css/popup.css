@@ -1,52 +1,20 @@
 body {
-	height: 200px;
-	margin: 5px;
-	width: 200px;
+	padding: 5px 10px 0 10px;
 }
 
 button {
-	background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0));
-	border: none;
-	border-bottom: 1px solid rgba(0, 0, 0, 0.25);
-	border-radius: 50%;
-	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-	color: #FFF;
-	cursor: pointer;
-	font: bold 24px "Arial", sans-serif;
-	text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25);
-}
-button:active:not([disabled]) {
-	background-image: none;
-	box-shadow: none;
-	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
-}
-button[disabled] {
-	background-color: rgba(0, 0, 0, 0.4) !important;
+	margin: 10px 0 !important;
 }
 
-#activate-morphine {
-	background-color: #2DAEBF;
-	height: 200px;
-	width: 200px;
+i {
+	background-image: url("../icons/glyphicons.png");
+	margin-top: 2px;
 }
 
-#activate-options {
-	background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0)), url("../icons/gear.png") no-repeat;
-	height: 48px;
-	position: absolute;
-	right: 10px;
-	top: 10px;
-	width: 48px;
-}
-#activate-options:active {
-	background: url("../icons/gear.png") no-repeat;
+.container {
+	width: 300px;
 }
 
-#activate-uber {
-	background-color: #F00;
-	bottom: 3px;
-	height: 75px;
-	position: absolute;
-	right: 3px;
-	width: 75px;
+button.span4 {
+	height: 220px;
 }
