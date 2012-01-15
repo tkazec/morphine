@@ -12,10 +12,54 @@ var version = "1.0";
 
 !Data.has("block") && Data.set("block", "<nope.avi>");
 
+chrome.browserAction.setBadgeBackgroundColor({ color: [255, 0, 0, 255] });
+
+
+/*** state ***/
+var state = window.state = {
+	balance: 0,
+	meter: 0,
+	add: {
+		id: -1,
+		fn: function(){
+			var size = Data.get("charge-size"),
+				balance = state.balance + size,
+				max = (size * (60 / Data.get("charge-interval"))) * 12;
+			
+			state.balance = Math.min(balance, max);
+		},
+		start: function(){
+			clearInterval(state.add.id);
+			
+			state.add.id = setInterval(state.add.fn, 1000 * 60 * Data.get("charge-interval"));
+		}
+	},
+	use: {
+		id: -1,
+		fn: function(){
+			if (--state.meter === 0) {
+				clearInterval(state.use.id);
+			}
+			
+			state.use.badge();
+		},
+		start: function(){
+			state.use.id = setInterval(state.use.fn, 1000 * 60);
+			
+			state.use.badge();
+		},
+		badge: function(){
+			chrome.browserAction.setBadgeText({ text: state.meter ? state.meter.toString() : "" });
+		}
+	}
+};
+
+state.add.start();
+
 
 /*** monitoring ***/
 var check = function(url, tID){
-	if (!((url = url.match(/:\/\/(.+?)\//)) && (url = url[1]))) {
+	if (state.meter > 0 || !((url = url.match(/:\/\/(.+?)\//)) && (url = url[1]))) {
 		return;
 	}
 	
@@ -40,7 +84,7 @@ var check = function(url, tID){
 		}
 	});
 	
-	matches && slap(tID, url);
+	matches && slap(tID);
 };
 
 chrome.tabs.onCreated.addListener(function(tab){
@@ -53,13 +97,13 @@ chrome.tabs.onUpdated.addListener(function(tID, changed, tab){
 
 
 /*** blocking ***/
-var slap = function(tID, orig){
+var slap = function(tID){
 	var url = Data.get("block");
 	
 	if (url === "<nope.avi>") {
 		url = "nope.webm";
 	} else if (url === "<popup>") {
-		url = "popup.html?" + encodeURIComponent(orig);
+		url = "popup.html?slap";
 	}
 	
 	chrome.tabs.update(tID, {

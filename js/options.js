@@ -1,6 +1,10 @@
 (function(){
 "use strict";
 
+/*** vars ***/
+var background = chrome.extension.getBackgroundPage();
+
+
 /*** charging ***/
 var charge = {
 	$interval: $("#charge-interval"),
@@ -9,11 +13,13 @@ var charge = {
 	$sizetext: $("output[for='charge-size']")
 };
 
-charge.$interval.change(function(){
+charge.$interval.change(function(e, real){
 	charge.$intervaltext.text("(every " + this.value + " minutes)");
 	charge.$size.prop("max", (this.value / 10) * 2).change();
 	
 	Data.set("charge-interval", this.valueAsNumber);
+	
+	real !== false && background.state.add.start();
 });
 
 charge.$size.change(function(){
@@ -23,7 +29,7 @@ charge.$size.change(function(){
 });
 
 charge.$size.val(Data.get("charge-size"));
-charge.$interval.val(Data.get("charge-interval")).change();
+charge.$interval.val(Data.get("charge-interval")).trigger("change", [false]);
 
 
 /*** targeting ***/
