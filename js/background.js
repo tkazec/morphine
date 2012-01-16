@@ -2,7 +2,7 @@
 "use strict";
 
 /*** setup ***/
-var version = "1.0";
+var version = "1.0.0";
 
 !Data.has("charge-interval") && Data.set("charge-interval", 10);
 !Data.has("charge-size") && Data.set("charge-size", 1);

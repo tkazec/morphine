@@ -18,3 +18,7 @@ i {
 button.span4 {
 	height: 220px;
 }
+
+.span2 + .span2 {
+	text-align: right;
+}

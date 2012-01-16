@@ -15,16 +15,16 @@ var update = function(){
 	$meter.text(meter);
 	
 	$use.each(function(){
-		this.disabled = parseInt(this.innerText) > balance;
+		this.disabled = parseInt(this.innerText, 10) > balance;
 	});
 };
 
 $("body").on("focus", "button", function(){
-	this.blur()
+	this.blur();
 	
 	$("body").off("focus", "button");
 }).on("click", "button", function(){
-	var amount = parseInt(this.innerText);
+	var amount = parseInt(this.innerText, 10);
 	
 	background.state.balance -= amount;
 	background.state.meter += amount;
@@ -32,9 +32,7 @@ $("body").on("focus", "button", function(){
 	
 	update();
 	
-	if (location.search === "?slap") {
-		history.back();
-	}
+	history.back();
 });
 
 update();
