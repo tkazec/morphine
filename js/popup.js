@@ -32,7 +32,9 @@ $("body").on("focus", "button", function(){
 	
 	update();
 	
-	history.back();
+	if (location.search) {
+		location.replace(decodeURIComponent(location.search.substr(1)));
+	}
 });
 
 update();

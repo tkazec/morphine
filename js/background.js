@@ -59,6 +59,8 @@ state.add.start();
 
 /*** monitoring ***/
 var check = function(url, tID){
+	var orig = url;
+	
 	if (state.meter > 0 || !((url = url.match(/:\/\/(.+?)\//)) && (url = url[1]))) {
 		return;
 	}
@@ -84,7 +86,7 @@ var check = function(url, tID){
 		}
 	});
 	
-	matches && slap(tID);
+	matches && slap(tID, orig);
 };
 
 chrome.tabs.onCreated.addListener(function(tab){
@@ -97,13 +99,13 @@ chrome.tabs.onUpdated.addListener(function(tID, changed, tab){
 
 
 /*** blocking ***/
-var slap = function(tID){
+var slap = function(tID, orig){
 	var url = Data.get("block");
 	
 	if (url === "<nope.avi>") {
 		url = "nope.webm";
 	} else if (url === "<popup>") {
-		url = "popup.html?slap";
+		url = "popup.html?" + encodeURIComponent(orig);
 	}
 	
 	chrome.tabs.update(tID, {
