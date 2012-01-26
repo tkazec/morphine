@@ -6,7 +6,7 @@ button {
 	margin: 10px 0 !important;
 }
 
-i {
+i.icon {
 	background-image: url("../icons/glyphicons.png");
 	margin-top: 2px;
 }
