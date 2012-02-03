@@ -6,8 +6,8 @@ button {
 	margin: 10px 0 !important;
 }
 
-i.icon {
-	background-image: url("../icons/glyphicons.png");
+i {
+	background-image: url("../icons/glyphicons-halflings.png") !important;
 	margin-top: 2px;
 }
 
