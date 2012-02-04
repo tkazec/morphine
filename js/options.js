@@ -59,30 +59,4 @@ target.$allow.on("input", function(){
 target.$block.val(target.get("block"));
 target.$allow.val(target.get("allow"));
 
-
-/*** blocking ***/
-var block = {
-	$radios: $("input[name='block']"),
-	$url: $("#block-url")
-};
-block.$custom = block.$radios.last();
-block.$excustom = block.$radios.not(block.$custom);
-
-block.$excustom.change(function(){
-	Data.set("block", this.value);
-	block.$url.val(this.value);
-});
-
-block.$url.focus(function(){
-	block.$custom.prop("checked", true);
-}).on("input", function(){
-	Data.set("block", this.value);
-});
-
-if (!block.$excustom.filter("[value='" + Data.get("block") + "']").prop("checked", true).length) {
-	block.$custom.prop("checked", true);
-}
-
-block.$url.val(Data.get("block"));
-
 })();
