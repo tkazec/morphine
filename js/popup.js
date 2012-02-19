@@ -19,10 +19,10 @@ var update = function(){
 	});
 };
 
-$("body").on("focus", "button", function(){
-	this.blur();
+$("body").on("focus", "*", function(){
+	!location.search && this.blur();
 	
-	$("body").off("focus", "button");
+	$("body").off("focus", "*");
 }).on("click", "button", function(){
 	var amount = parseInt(this.innerText, 10);
 	
