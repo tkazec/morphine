@@ -1,5 +1,4 @@
-(function(){
-"use strict";
+(function () { "use strict";
 
 /*** vars ***/
 var background = chrome.extension.getBackgroundPage();
@@ -13,7 +12,7 @@ var charge = {
 	$sizetext: $("output[for='charge-size']")
 };
 
-charge.$interval.change(function(e, real){
+charge.$interval.change(function (e, real) {
 	charge.$intervaltext.text("(every " + this.value + " minutes)");
 	charge.$size.prop("max", (this.value / 10) * 2).change();
 	
@@ -22,7 +21,7 @@ charge.$interval.change(function(e, real){
 	real !== false && background.state.add.start();
 });
 
-charge.$size.change(function(){
+charge.$size.change(function () {
 	charge.$sizetext.text("(+" + this.value + " per charge)");
 	
 	Data.set("charge-size", this.valueAsNumber);
@@ -36,23 +35,23 @@ charge.$interval.val(Data.get("charge-interval")).trigger("change", [false]);
 var target = {
 	$block: $("#target-block"),
 	$allow: $("#target-allow"),
-	get: function(key){
+	get: function (key) {
 		return Data.get("target-" + key).join("\n");
 	},
-	set: function(key, val){
-		Data.set("target-" + key, val.split("\n").filter(function(v){
+	set: function (key, val) {
+		Data.set("target-" + key, val.split("\n").filter(function (v) {
 			return v;
-		}).map(function(v){
+		}).map(function (v) {
 			return v.trim();
 		}));
 	}
 };
 
-target.$block.on("input", function(){
+target.$block.on("input", function () {
 	target.set("block", this.value);
 });
 
-target.$allow.on("input", function(){
+target.$allow.on("input", function () {
 	target.set("allow", this.value);
 });
 

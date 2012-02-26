@@ -1,5 +1,4 @@
-(function(){
-"use strict";
+(function () { "use strict";
 
 /*** setup ***/
 var version = "1.0.0";
@@ -19,34 +18,37 @@ var state = window.state = {
 	meter: 0,
 	add: {
 		id: -1,
-		fn: function(){
+		fn: function () {
 			var size = Data.get("charge-size"),
 				balance = state.balance + size,
 				max = (size * (60 / Data.get("charge-interval"))) * 12;
 			
 			state.balance = Math.min(balance, max);
 		},
-		start: function(){
+		start: function () {
 			clearInterval(state.add.id);
 			
 			state.add.id = setInterval(state.add.fn, 1000 * 60 * Data.get("charge-interval"));
 		}
 	},
 	use: {
-		id: -1,
-		fn: function(){
+		id: null,
+		fn: function () {
 			if (--state.meter === 0) {
 				clearInterval(state.use.id);
+				state.use.id = null;
 			}
 			
 			state.use.badge();
 		},
-		start: function(){
-			state.use.id = setInterval(state.use.fn, 1000 * 60);
+		start: function () {
+			if (!state.use.id) {
+				state.use.id = setInterval(state.use.fn, 1000 * 60);
+			}
 			
 			state.use.badge();
 		},
-		badge: function(){
+		badge: function () {
 			chrome.browserAction.setBadgeText({ text: state.meter ? state.meter.toString() : "" });
 		}
 	}
@@ -56,7 +58,7 @@ state.add.start();
 
 
 /*** monitoring ***/
-var check = function(url, tID){
+var check = function (url, tID) {
 	var orig = url,
 		block = Data.get("target-block"),
 		allow = Data.get("target-allow");
@@ -65,15 +67,15 @@ var check = function(url, tID){
 		return;
 	}
 	
-	var apply = function(url, rule){
+	var apply = function (url, rule) {
 		var index = url.indexOf(rule);
 		
 		return index !== -1 && index === url.length - rule.length && (index > 0 ? url[index - 1] === "." : true);
 	};
 	
-	var matches = block.some(function(rule){
+	var matches = block.some(function (rule) {
 		if (apply(url, rule)) {
-			var allowed = allow.some(function(rule){
+			var allowed = allow.some(function (rule) {
 				return apply(url, rule);
 			});
 			
@@ -88,11 +90,11 @@ var check = function(url, tID){
 	});
 };
 
-chrome.tabs.onCreated.addListener(function(tab){
+chrome.tabs.onCreated.addListener(function (tab) {
 	tab.url && check(tab.url, tab.id);
 });
 
-chrome.tabs.onUpdated.addListener(function(tID, changed, tab){
+chrome.tabs.onUpdated.addListener(function (tID, changed, tab) {
 	changed.url && check(changed.url, tID);
 });
 
