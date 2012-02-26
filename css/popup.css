@@ -8,7 +8,7 @@ button {
 
 i {
 	background-image: url("../icons/glyphicons-halflings.png") !important;
-	margin-top: 2px;
+	margin-top: 1px;
 }
 
 .container {
@@ -21,4 +21,8 @@ button.span4 {
 
 .span2 + .span2 {
 	text-align: right;
+}
+
+.label {
+	cursor: help;
 }

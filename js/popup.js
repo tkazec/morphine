@@ -3,8 +3,8 @@
 
 var background = chrome.extension.getBackgroundPage();
 
-var $balance = $("#time-balance"),
-	$meter = $("#time-meter"),
+var $balance = $("#time-balance").tooltip({ placement: "right" }),
+	$meter = $("#time-meter").tooltip({ placement: "left" }),
 	$use = $("button");
 
 var update = function(){
