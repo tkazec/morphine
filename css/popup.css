@@ -3,6 +3,7 @@ body {
 }
 
 button {
+	height: 60px;
 	margin: 10px 0 !important;
 }
 
@@ -15,14 +16,14 @@ i {
 	width: 300px;
 }
 
-button.span4 {
-	height: 220px;
-}
-
-.span2 + .span2 {
+.align-right {
 	text-align: right;
 }
 
 .label {
 	cursor: help;
+}
+
+.btn-tall {
+	height: 140px;
 }

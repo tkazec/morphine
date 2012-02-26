@@ -4,7 +4,8 @@ var background = chrome.extension.getBackgroundPage();
 
 var $balance = $("#time-balance").tooltip({ placement: "right" }),
 	$meter = $("#time-meter").tooltip({ placement: "left" }),
-	$use = $("button");
+	$use = $("button"),
+	$usecustom = $("#use-custom");
 
 var update = function () {
 	var balance = background.state.balance,
@@ -16,6 +17,8 @@ var update = function () {
 	$use.each(function () {
 		this.disabled = parseInt(this.innerText, 10) > balance;
 	});
+	
+	$usecustom.text(balance).parent().prop("disabled", !balance);
 };
 
 $("body").on("focus", "*", function () {
