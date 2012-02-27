@@ -24,6 +24,7 @@ var state = window.state = {
 				max = (size * (60 / Data.get("charge-interval"))) * 12;
 			
 			state.balance = Math.min(balance, max);
+			state.sync();
 		},
 		start: function () {
 			clearInterval(state.add.id);
@@ -39,17 +40,19 @@ var state = window.state = {
 				state.use.id = null;
 			}
 			
-			state.use.badge();
+			state.use.display();
 		},
 		start: function () {
 			if (!state.use.id) {
 				state.use.id = setInterval(state.use.fn, 1000 * 60);
 			}
 			
-			state.use.badge();
+			state.use.display();
 		},
-		badge: function () {
+		display: function () {
 			chrome.browserAction.setBadgeText({ text: state.meter ? state.meter.toString() : "" });
+			
+			state.sync();
 		}
 	},
 	sync: function () {
