@@ -7,7 +7,7 @@ var $balance = $("#time-balance").tooltip({ placement: "right" }),
 	$use = $("button"),
 	$usecustom = $("#use-custom");
 
-var update = function () {
+var update = window.update = function () {
 	var balance = background.state.balance,
 		meter = background.state.meter;
 	
@@ -19,6 +19,10 @@ var update = function () {
 	});
 	
 	$usecustom.text(balance).parent().prop("disabled", !balance);
+	
+	if (meter && location.search) {
+		location.replace(decodeURIComponent(location.search.substr(1)));
+	}
 };
 
 $("body").on("focus", "*", function () {
@@ -32,11 +36,7 @@ $("body").on("focus", "*", function () {
 	background.state.meter += amount;
 	background.state.use.start();
 	
-	update();
-	
-	if (location.search) {
-		location.replace(decodeURIComponent(location.search.substr(1)));
-	}
+	background.state.sync();
 });
 
 update();

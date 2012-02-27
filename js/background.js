@@ -51,6 +51,11 @@ var state = window.state = {
 		badge: function () {
 			chrome.browserAction.setBadgeText({ text: state.meter ? state.meter.toString() : "" });
 		}
+	},
+	sync: function () {
+		chrome.extension.getViews({ type: "tab" }).forEach(function (tab) {
+			tab.update();
+		});
 	}
 };
 
@@ -63,7 +68,7 @@ var check = function (url, tID) {
 		block = Data.get("target-block"),
 		allow = Data.get("target-allow");
 	
-	if (state.meter > 0 || !((url = url.match(/:\/\/(.+?)\//)) && (url = url[1]))) {
+	if (state.meter || !((url = url.match(/:\/\/(.+?)\//)) && (url = url[1]))) {
 		return;
 	}
 	
