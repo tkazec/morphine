@@ -1,3 +1,5 @@
+var _gaq = _gaq || [];
+
 (function () { "use strict";
 
 /*** setup ***/
@@ -10,6 +12,13 @@ var version = "0.9.0";
 !Data.has("target-allow") && Data.set("target-allow", []);
 
 chrome.browserAction.setBadgeBackgroundColor({ color: [255, 0, 0, 255] });
+
+_gaq.push(
+	["_setAccount", "##GA##"],
+	["_setSessionCookieTimeout", 0],
+	["_setCustomVar", 1, "Version", version, 2],
+	["_trackPageview", "/"]
+);
 
 
 /*** state ***/

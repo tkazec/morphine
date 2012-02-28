@@ -1,7 +1,9 @@
 (function () { "use strict";
 
-/*** vars ***/
+/*** setup ***/
 var background = chrome.extension.getBackgroundPage();
+
+background._gaq.push(["_trackPageview", "/options"]);
 
 
 /*** charging ***/

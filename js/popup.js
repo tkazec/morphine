@@ -41,4 +41,6 @@ $("body").on("focus", "*", function () {
 
 update();
 
+background._gaq.push(["_trackPageview", "/popup"]);
+
 })();
