@@ -57,7 +57,7 @@ var state = window.state = {
 	},
 	sync: function () {
 		chrome.extension.getViews({ type: "tab" }).forEach(function (tab) {
-			tab.update();
+			typeof tab.update === "function" && tab.update();
 		});
 	}
 };

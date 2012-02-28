@@ -39,10 +39,10 @@ var target = {
 		return Data.get("target-" + key).join("\n");
 	},
 	set: function (key, val) {
-		Data.set("target-" + key, val.split("\n").filter(function (v) {
-			return v;
-		}).map(function (v) {
+		Data.set("target-" + key, val.split("\n").map(function (v) {
 			return v.trim();
+		}).filter(function (v) {
+			return v;
 		}));
 	}
 };
