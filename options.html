@@ -37,20 +37,22 @@
 			<h2>Targeting</h2>
 			<div class="row">
 				<div class="span6">
-					<p>Add domains to block and (optionally) allow, one per line. Enter the domain only, so no slashes and stuff. For example, <code>reddit.com</code> is accepted, but <code>http://reddit.com/</code> isn't.</p>
+					<p>Add sites to block and (optionally) allow, one per line. Subdomains and subpaths are accepted, and if not provided will be wildcarded.</p>
 					
-					<p>Subdomains are accepted, and if not provided will be wildcarded. The allowed domains override the blocked domains and can be used to allow specific subdomains.</p>
+					<p>The allowed sites override the blocked sites and can be used to allow specific subdomains or subpaths.</p>
+					
+					<p>Examples: <code>reddit.com</code>, <code>plus.google.com</code>, <code>google.com/analytics/web</code></p>
 				</div>
 				
 				<div class="span6">
 					<div class="row">
 						<div class="span3">
-							<label for="target-block">Blocked domains</label>
+							<label for="target-block">Blocked sites</label>
 							<textarea id="target-block" rows="5"></textarea>
 						</div>
 						
 						<div class="span3">
-							<label for="target-allow">Allowed domains</label>
+							<label for="target-allow">Allowed sites</label>
 							<textarea id="target-allow" rows="5"></textarea>
 						</div>
 					</div>

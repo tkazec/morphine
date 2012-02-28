@@ -67,24 +67,30 @@ state.add.start();
 
 /*** monitoring ***/
 var check = function (url, tID) {
-	var orig = url,
-		block = Data.get("target-block"),
-		allow = Data.get("target-allow");
-	
-	if (state.meter || !((url = url.match(/:\/\/(.+?)\//)) && (url = url[1]))) {
+	if (state.meter) {
 		return;
 	}
 	
-	var apply = function (url, rule) {
-		var index = url.indexOf(rule);
+	var block = Data.get("target-block"),
+		allow = Data.get("target-allow"),
+		uri = new Uri(url);
+	
+	var apply = function (rule) {
+		var rule = new Uri(rule),
+			uhost = uri.host(),
+			rhost = rule.host(),
+			upath = uri.path(),
+			rpath = rule.path(),
+			index = uhost.indexOf(rhost);
 		
-		return index !== -1 && index === url.length - rule.length && (index > 0 ? url[index - 1] === "." : true);
+		return index !== -1 && index === uhost.length - rhost.length && (index > 0 ? uhost[index - 1] === "." : true)
+			&& upath.indexOf(rpath) === 0 && (upath.length > rpath.length ? (rpath.substr(-1) === "/" || upath[rpath.length] === "/") : true);
 	};
 	
 	var matches = block.some(function (rule) {
-		if (apply(url, rule)) {
+		if (apply(rule)) {
 			var allowed = allow.some(function (rule) {
-				return apply(url, rule);
+				return apply(rule);
 			});
 			
 			if (!allowed) {
@@ -94,7 +100,7 @@ var check = function (url, tID) {
 	});
 	
 	matches && chrome.tabs.update(tID, {
-		url: "popup.html?" + encodeURIComponent(orig)
+		url: "popup.html?" + encodeURIComponent(url)
 	});
 };
 
