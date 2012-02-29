@@ -1,6 +1,7 @@
 (function () { "use strict";
 
-var background = chrome.extension.getBackgroundPage();
+var background = chrome.extension.getBackgroundPage(),
+	isTab = location.search;
 
 var $balance = $("#time-balance").tooltip({ placement: "right" }),
 	$meter = $("#time-meter").tooltip({ placement: "left" }),
@@ -20,13 +21,13 @@ var update = window.update = function () {
 	
 	$usecustom.text(balance).parent().prop("disabled", !balance);
 	
-	if (meter && location.search) {
-		location.replace(decodeURIComponent(location.search.substr(1)));
+	if (meter && isTab) {
+		location.replace(decodeURIComponent(isTab.substr(1)));
 	}
 };
 
 $("body").on("focus", "*", function () {
-	!location.search && this.blur();
+	!isTab && this.blur();
 	
 	$("body").off("focus", "*");
 }).on("click", "button", function () {
@@ -36,11 +37,13 @@ $("body").on("focus", "*", function () {
 	background.state.meter += amount;
 	background.state.use.start();
 	
+	background._gaq.push(["_trackEvent", "Balance", "Use", isTab ? "tab" : "popup", amount]);
+	
 	background.state.sync();
 });
 
 update();
 
-background._gaq.push(["_trackPageview", location.search ? "/tab" : "/popup"]);
+background._gaq.push(["_trackPageview", isTab ? "/tab" : "/popup"]);
 
 })();
