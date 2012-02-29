@@ -32,7 +32,7 @@ var state = window.state = {
 		fn: function () {
 			var size = Data.get("charge-size"),
 				balance = state.balance + size,
-				max = (size * (60 / Data.get("charge-interval"))) * 12;
+				max = (size * (60 / Data.get("charge-interval"))) * 6;
 			
 			state.balance = Math.min(balance, max);
 			state.sync();
