@@ -16,7 +16,9 @@ chrome.browserAction.setBadgeBackgroundColor({ color: [255, 0, 0, 255] });
 _gaq.push(
 	["_setAccount", "##GA##"],
 	["_setSessionCookieTimeout", 0],
-	["_setCustomVar", 1, "Version", version, 2],
+	["_setCustomVar", 1, "Version", version, 1],
+	["_setCustomVar", 2, "ChargeInterval", Data.get("charge-interval").toString(), 1],
+	["_setCustomVar", 3, "ChargeSize", Data.get("charge-size").toString(), 1],
 	["_trackPageview", "/"]
 );
 
