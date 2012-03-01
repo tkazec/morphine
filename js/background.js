@@ -22,6 +22,9 @@ _gaq.push(
 	["_trackPageview", "/"]
 );
 
+!Data.has("version") && window.open("options.html");
+Data.set("version", version);
+
 
 /*** state ***/
 var state = window.state = {
