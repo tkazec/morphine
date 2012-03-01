@@ -6,6 +6,10 @@ Todo:
 
 * Fix incognito behavior.
 
+Maybe eventually:
+
+* Block open blocked sites when the meter runs out, maybe count down last minute of the meter in the browser action badge?
+
 ---
 
 >Copyright (c) 2012 Teddy Cross
@@ -15,18 +19,3 @@ Todo:
 >The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 >THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-<div></div>
-
->jsUri 1.1.1 - MIT<br>
->Copyright 2011 Derek Watson
-
-<div></div>
-
->jQuery 1.7.1 - MIT/GPLv2<br>
->Copyright 2011 John Resig
-
-<div></div>
-
->Bootstrap 2.0.1 - Apache v2<br>
->Copyright 2012 Twitter, Inc.
