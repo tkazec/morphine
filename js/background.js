@@ -22,7 +22,7 @@ _gaq.push(
 	["_trackPageview", "/"]
 );
 
-!Data.has("version") && window.open("options.html");
+!Data.has("version") && window.open("options.html?firstrun");
 Data.set("version", version);
 
 

@@ -3,6 +3,8 @@
 /*** setup ***/
 var background = chrome.extension.getBackgroundPage();
 
+location.search && $(".alert").show();
+
 background._gaq.push(["_trackPageview", "/options"]);
 
 
