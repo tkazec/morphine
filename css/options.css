@@ -1,4 +1,8 @@
-.alert {
-	margin-bottom: 9px;
+body {
 	margin-top: 9px;
+}
+
+.alert {
+	display: none;
+	margin-bottom: 9px;
 }
