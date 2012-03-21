@@ -3,8 +3,8 @@
 var background = chrome.extension.getBackgroundPage(),
 	isTab = location.search;
 
-var $balance = $("#time-balance").tooltip({ placement: "right" }),
-	$meter = $("#time-meter").tooltip({ placement: "left" }),
+var $balance = $("#time-balance"),
+	$meter = $("#time-meter"),
 	$use = $("button"),
 	$usecustom = $("#use-custom");
 
@@ -12,8 +12,8 @@ var update = window.update = function () {
 	var balance = background.state.balance,
 		meter = background.state.meter;
 	
-	$balance.text(balance);
-	$meter.text(meter);
+	$balance.text(balance).toggleClass("badge-info", !!balance);
+	$meter.text(meter).toggleClass("badge-warning", !!meter);
 	
 	$use.each(function () {
 		this.disabled = parseInt(this.innerText, 10) > balance;
