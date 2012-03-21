@@ -5,6 +5,9 @@ Regulated distraction. https://chrome.google.com/webstore/detail/fbnpehpbojenlld
 Todo:
 
 * Fix incognito behavior.
+* Prefill balance on start?
+* Run at certain times of the day?
+* Better promo graphics.
 
 Maybe eventually:
 
