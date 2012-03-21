@@ -9,7 +9,7 @@ button {
 
 i {
 	background-image: url("../img/glyphicons-halflings.png") !important;
-	margin-top: 1px;
+	margin-top: 2px !important;
 }
 
 .container {
@@ -22,6 +22,7 @@ i {
 
 .label {
 	cursor: help;
+	vertical-align: text-bottom;
 }
 
 .btn-tall {
