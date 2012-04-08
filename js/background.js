@@ -11,6 +11,8 @@ var version = "0.9.1";
 !Data.has("target-block") && Data.set("target-block", []);
 !Data.has("target-allow") && Data.set("target-allow", []);
 
+!Data.has("balance") && Data.set("balance", 0);
+
 chrome.browserAction.setBadgeBackgroundColor({ color: [255, 0, 0, 255] });
 
 _gaq.push(
@@ -28,7 +30,12 @@ Data.set("version", version);
 
 /*** state ***/
 var state = window.state = {
-	balance: 0,
+	get balance () {
+		return Data.get("balance");
+	},
+	set balance (v) {
+		Data.set("balance", v)
+	},
 	meter: 0,
 	add: {
 		id: -1,
