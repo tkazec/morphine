@@ -8,19 +8,35 @@
 	</head>
 	<body>
 		<div class="container">
+			<!-- first install message -->
 			<div class="alert alert-success">
-				<strong>Welcome!</strong> It seems that you have successfully installed Morphine. Thanks for checking it out. Please take a minute to review its options below for an optimal experience, and once you've used it for a bit consider reviewing it on the Chrome Web Store. Have fun!
+				<strong>Welcome!</strong> It seems that you have successfully installed Morphine. Thanks for checking it out! Please take a minute to review its options below for an optimal experience, and once you've used it for a bit consider reviewing it on the Chrome Web Store. Have fun!
 			</div>
 			
-			<p>Morphine is a website blocker with a twist. Instead of allotting a certain amount of time each day for using blocked sites, Morphine gives you a "balance" to pull from, which is very slowly filled with minutes. This allows you to use your blocked sites whenever you want for as long as you want&mdash;provided you have enough time in your balance. In other words: Regulated Distraction&trade;&reg;!</p>
 			
-			<p>But why take this approach? Well, let's say you're at work and have a standard website blocker turned on. A friend sends you a link to an item on one of your blocked sites, but when you try to access it, turns out you've already used all your daily allotted time up! However if you were using Morphine, your wait would be no more than 10 minutes (by default), since the balance is always slowly being added to.</p>
+			<!-- options -->
+			<div class="page-header">
+				<h1>Options</h1>
+			</div>
 			
-			<hr>
+			<div class="row">
+				<div class="span6">
+					<h3>Charging</h3>
+				</div>
+				
+				<div class="span6">
+					<div class="row">
+						<div class="span3">
+							<label for="charge-interval">Interval <output for="charge-interval" class="muted"></output></label>
+						</div>
+						
+						<div class="span3">
+							<label for="charge-size">Size <output for="charge-size" class="muted"></output></label>
+						</div>
+					</div>
+				</div>
+			</div>
 			
-			<p>Ready to get started? Using the balance is very easy. Once you've set the options below to your taste, click on the Morphine icon in the toolbar or try to visit a blocked site. A page with a few large buttons with numbers will be displayed&mdash;these represent minutes. Click one to add that number to the "meter". Once the meter is used up, the sites will return to being blocked.</p>
-			
-			<h2>Charging</h2>
 			<div class="row">
 				<div class="span6">
 					<p>Set the optimal time balance charge rate for you! With the default settings, +1 minute will be given every 10 minutes, but it can be adjusted for optimal productivity, distraction, and attention span levels.</p>
@@ -29,74 +45,106 @@
 				<div class="span6">
 					<div class="row">
 						<div class="span3">
-							<label for="charge-interval">Interval <output for="charge-interval" class="muted"></output></label>
 							<input type="range" id="charge-interval" min="10" max="60" step="5">
 						</div>
 						
 						<div class="span3">
-							<label for="charge-size">Size <output for="charge-size" class="muted"></output></label>
 							<input type="range" id="charge-size" min="1" max="12" step="1">
 						</div>
 					</div>
 				</div>
 			</div>
 			
-			<h2>Targeting</h2>
 			<div class="row">
 				<div class="span6">
-					<p>Add sites to block and (optionally) allow, one per line. Subdomains and subpaths are accepted, and if not provided will be wildcarded.</p>
-					
-					<p>The allowed sites override the blocked sites and can be used to allow specific subdomains or subpaths.</p>
-					
-					<p>Examples: <code>reddit.com</code>, <code>plus.google.com</code>, <code>google.com/analytics/web</code></p>
+					<h3>Blocking</h3>
 				</div>
 				
 				<div class="span6">
 					<div class="row">
 						<div class="span3">
 							<label for="target-block">Blocked sites</label>
-							<textarea id="target-block" rows="5"></textarea>
 						</div>
 						
 						<div class="span3">
 							<label for="target-allow">Allowed sites</label>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="span6">
+					<p>Add sites to block and (optionally) allow, one per line. Subdomains and subpaths are accepted, and if not provided will be wildcarded.</p>
+					
+					<p>The allowed sites override the blocked sites and can be used to allow specific subdomains or subpaths.</p>
+				</div>
+				
+				<div class="span6">
+					<div class="row">
+						<div class="span3">
+							<textarea id="target-block" rows="5"></textarea>
+						</div>
+						
+						<div class="span3">
 							<textarea id="target-allow" rows="5"></textarea>
 						</div>
 					</div>
 				</div>
 			</div>
 			
-			<h2>Learning</h2>
-			<div class="row">
-				<div class="span4">
-					<h3>Bugging</h3>
-					<p>Having a problem with Morphine? Send all angry emails to <a href="mailto:me@tkaz.ec">me@tkaz.ec</a>, and don't forget to have a nice day!</p>
+			
+			<!-- help -->
+			<div class="page-header">
+				<h1>Help</h1>
+			</div>
+			
+			<p>Morphine is a website blocker with a twist. Instead of allotting a certain amount of time each day for using blocked sites, Morphine gives you a "balance" to pull from, which is very slowly filled with minutes. This allows you to use your blocked sites whenever you want for as long as you want&mdash;provided you have enough time in your balance. In other words: Regulated Distraction&trade;&reg;!</p>
+			
+			<p>But why take this approach? Well, let's say you're at work and have a standard website blocker turned on. A friend sends you a link to an item on one of your blocked sites, but when you try to access it, turns out you've already used all your daily allotted time up! However if you were using Morphine, your wait would be no more than 10 minutes (by default), since the balance is always slowly being added to.</p>
+			
+			<p>Ready to get started? Using the balance is very easy. Once you've set the options above to your taste, click on the Morphine icon in the toolbar or try to visit a blocked site. A page with a few large buttons with numbers will be displayed&mdash;these represent minutes. Click one to add that number to the "meter". Once the meter is used up, the sites will return to being blocked.</p>
+			
+			
+			<!-- about -->
+			<div class="page-header">
+				<h1>About</h1>
+			</div>
+			
+			<div class="row">				
+				<div class="span6">
+					<h3>Feedback</h3>
+					<p>Having a problem with Morphine? Got a question or idea? Please feel free to <a href="mailto:me@tkaz.ec">send me an email</a>, and I'll try and respond as quickly as possible :)</p>
 				</div>
 				
-				<div class="span4">
-					<h3>Developing</h3>
+				<div class="span6">
+					<h3>Contributing</h3>
 					<p>If you're a developer and would like to contribute, awesome! Morphine is open source, and can be found <a href="https://github.com/tkazec/morphine">on GitHub</a>.</p>
-				</div>
-				
-				<div class="span4">
-					<h3>Living</h3>
-					<p>I'm a 15 year old web &amp; game developer who loves making beautiful, useful, and fun things. Like this extension? Check out <a href="http://tkaz.ec">my other stuff</a>!</p>
 				</div>
 			</div>
 			
-			<h3>Changing</h3>
-			
-			<h4>0.9.1 <small>2012-03-20</small></h4>
-			<ul>
-				<li>Updated the balance and meter badges appearance.
-				<li>Fixed state syncing in the popup, whoops!
-				<li>Internal improvements :D
-			</ul>
-			
-			<h4>0.9.0 <small>2012-02-29</small></h4>
-			<ul>
-				<li>Awesome beta release!
-			</ul>
+			<div class="row">
+				<div class="span6">
+					<h3>Author</h3>
+					<p>I'm a 15 year old web &amp; game developer who loves making beautiful, useful, and fun things. Like this extension? Check out <a href="http://tkaz.ec">my other stuff</a>!</p>
+				</div>
+				
+				<div class="span6" id="changelog">
+					<h3>Changelog <small class="pull-right"><a href="#changelog" id="changelog-show">show all</a></small></h3>
+					
+					<h4>0.9.1 <small>2012-03-20</small></h4>
+					<ul>
+						<li>Updated the balance and meter badges appearance.
+						<li>Fixed state syncing in the popup, whoops!
+						<li>Internal improvements :D
+					</ul>
+					
+					<h4>0.9.0 <small>2012-02-29</small></h4>
+					<ul>
+						<li>Awesome beta release!
+					</ul>
+				</div>
+			</div>
 		</div>
 		
 		<script src="js/jquery.js"></script>

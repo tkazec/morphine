@@ -2,7 +2,24 @@ body {
 	margin-top: 9px;
 }
 
+input[type="range"] {
+	margin-bottom: 0;
+	padding-bottom: 0;
+	padding-top: 0;
+}
+
+label {
+	margin-top: 4px;
+}
+
 .alert {
 	display: none;
 	margin-bottom: 9px;
+}
+
+#changelog > :not(h3):not(a) {
+	display: none;
+}
+#changelog > h4:first-of-type, #changelog > ul:first-of-type {
+	display: block;
 }
