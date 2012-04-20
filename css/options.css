@@ -1,7 +1,3 @@
-body {
-	margin-top: 9px;
-}
-
 input[type="range"] {
 	margin-bottom: 0;
 	padding-bottom: 0;
@@ -14,7 +10,7 @@ label {
 
 .alert {
 	display: none;
-	margin-bottom: 9px;
+	margin-top: 9px;
 }
 
 #changelog > :not(h3):not(a) {
