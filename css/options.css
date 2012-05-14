@@ -13,7 +13,7 @@ label {
 	margin-top: 9px;
 }
 
-#changelog > :not(h3):not(a) {
+#changelog > :not(h3) {
 	display: none;
 }
 #changelog > h4:first-of-type, #changelog > ul:first-of-type {
