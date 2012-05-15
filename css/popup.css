@@ -7,11 +7,6 @@ button {
 	margin: 10px 0 !important;
 }
 
-i {
-	background-image: url("../img/glyphicons-halflings.png") !important;
-	margin-top: 2px !important;
-}
-
 .container {
 	width: 300px;
 }

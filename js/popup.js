@@ -19,7 +19,7 @@ var update = window.update = function () {
 		this.disabled = parseInt(this.innerText, 10) > balance;
 	});
 	
-	$usecustom.text(balance).parent().prop("disabled", !balance);
+	$usecustom.text("+" + balance).parent().prop("disabled", !balance);
 	
 	if (meter && isTab) {
 		location.replace(decodeURIComponent(isTab.substr(1)));
