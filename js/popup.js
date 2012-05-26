@@ -1,16 +1,16 @@
 (function () { "use strict";
 
-var background = chrome.extension.getBackgroundPage(),
-	isTab = location.search;
+var background = chrome.extension.getBackgroundPage();
+var isTab = location.search;
 
-var $balance = $("#time-balance"),
-	$meter = $("#time-meter"),
-	$use = $("button"),
-	$usecustom = $("#use-custom");
+var $balance = $("#time-balance");
+var $meter = $("#time-meter");
+var $use = $("button");
+var $usecustom = $("#use-custom");
 
 var update = window.update = function () {
-	var balance = background.state.balance,
-		meter = background.state.meter;
+	var balance = background.state.balance;
+	var meter = background.state.meter;
 	
 	$balance.text(balance).toggleClass("badge-info", !!balance);
 	$meter.text(meter).toggleClass("badge-warning", !!meter);
@@ -26,11 +26,7 @@ var update = window.update = function () {
 	}
 };
 
-$("body").on("focus", "*", function () {
-	!isTab && this.blur();
-	
-	$("body").off("focus", "*");
-}).on("click", "button", function () {
+$("body").on("click", "button", function () {
 	var amount = parseInt(this.innerText, 10);
 	
 	background.state.balance -= amount;

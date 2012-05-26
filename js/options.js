@@ -64,7 +64,7 @@ target.$allow.val(target.get("allow"));
 
 
 /*** changelog ***/
-$("#changelog-show").click(function(){
+$("#changelog-show").click(function () {
 	$("#changelog").children().css("display", "block");
 	
 	$(this).remove();

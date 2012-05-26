@@ -40,9 +40,9 @@ var state = window.state = {
 	add: {
 		id: -1,
 		fn: function () {
-			var size = Data.get("charge-size"),
-				balance = state.balance + size,
-				max = (size * (60 / Data.get("charge-interval"))) * 6;
+			var size = Data.get("charge-size");
+			var balance = state.balance + size;
+			var max = (size * (60 / Data.get("charge-interval"))) * 6;
 			
 			state.balance = Math.min(balance, max);
 			state.sync();
@@ -92,17 +92,17 @@ var check = function (url, tID) {
 		return;
 	}
 	
-	var block = Data.get("target-block"),
-		allow = Data.get("target-allow"),
-		uri = new Uri(url);
+	var block = Data.get("target-block");
+	var allow = Data.get("target-allow");
+	var uri = new Uri(url);
 	
 	var apply = function (rule) {
-		var rule = new Uri(rule),
-			uhost = uri.host(),
-			rhost = rule.host(),
-			upath = uri.path(),
-			rpath = rule.path(),
-			index = uhost.indexOf(rhost);
+		var rule = new Uri(rule);
+		var uhost = uri.host();
+		var rhost = rule.host();
+		var upath = uri.path();
+		var rpath = rule.path();
+		var index = uhost.indexOf(rhost);
 		
 		return index !== -1 && index === uhost.length - rhost.length && (index > 0 ? uhost[index - 1] === "." : true)
 			&& upath.indexOf(rpath) === 0 && (upath.length > rpath.length ? (rpath.substr(-1) === "/" || upath[rpath.length] === "/") : true);
