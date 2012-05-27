@@ -13,6 +13,17 @@ label {
 	margin-top: 9px;
 }
 
+.thumbnails {
+	margin-bottom: 0;
+}
+
+.thumbnail > hr {
+	margin: 9px 0;
+}
+.thumbnail > .caption {
+	padding-bottom: 0;
+}
+
 #changelog > :not(h3) {
 	display: none;
 }
