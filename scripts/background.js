@@ -5,13 +5,13 @@ var _gaq = _gaq || [];
 /*** setup ***/
 var version = "0.9.2";
 
-!Data.has("charge-interval") && Data.set("charge-interval", 10);
-!Data.has("charge-size") && Data.set("charge-size", 1);
+Data.def("charge-interval", 10);
+Data.def("charge-size", 1);
 
-!Data.has("target-block") && Data.set("target-block", []);
-!Data.has("target-allow") && Data.set("target-allow", []);
+Data.def("target-block", []);
+Data.def("target-allow", []);
 
-!Data.has("balance") && Data.set("balance", 0);
+Data.def("balance", 0);
 
 chrome.browserAction.setBadgeBackgroundColor({ color: [255, 0, 0, 255] });
 

@@ -10,6 +10,9 @@ var Data = window.Data = {
 	set: function (key, val) {
 		localStorage.setItem(key, JSON.stringify(val));
 	},
+	def: function (key, val) {
+		!Data.has(key) && Data.set(key, val);
+	},
 	del: function (key) {
 		localStorage.removeItem(key);
 	}
