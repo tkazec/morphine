@@ -13,8 +13,6 @@ Data.def("target-allow", []);
 
 Data.def("balance", 0);
 
-chrome.browserAction.setBadgeBackgroundColor({ color: [255, 0, 0, 255] });
-
 _gaq.push(
 	["_setAccount", "##GA##"],
 	["_setSessionCookieTimeout", 0],
@@ -73,6 +71,7 @@ var state = window.state = {
 			state.use.display();
 		},
 		display: function () {
+			chrome.browserAction.setBadgeBackgroundColor({ color: state.meter > 1 ? [0, 0, 255, 255] : [255, 0, 0, 255] });
 			chrome.browserAction.setBadgeText({ text: state.meter ? state.meter.toString() : "" });
 			
 			state.sync();
