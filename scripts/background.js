@@ -59,6 +59,8 @@ var state = window.state = {
 			if (--state.meter === 0) {
 				clearInterval(state.use.id);
 				state.use.id = null;
+				
+				checkall();
 			}
 			
 			state.use.display();
@@ -122,6 +124,14 @@ var check = function (url, tID) {
 	
 	matches && chrome.tabs.update(tID, {
 		url: "popup.html?" + encodeURIComponent(url)
+	});
+};
+
+var checkall = function () {
+	chrome.tabs.query({}, function (tabs) {
+		tabs.forEach(function (tab) {
+			check(tab.url, tab.id);
+		});
 	});
 };
 
