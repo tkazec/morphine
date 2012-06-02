@@ -1,7 +1,5 @@
 input[type="range"] {
-	margin-bottom: 0;
-	padding-bottom: 0;
-	padding-top: 0;
+	width: 100%; /* TODO tempfix for bootstrap 2.0.4 */
 }
 
 label {
@@ -21,6 +19,7 @@ label {
 	margin: 9px 0;
 }
 .thumbnail > .caption {
+	line-height: 18px; /* TODO tempfix for bootstrap 2.0.4 */
 	padding-bottom: 0;
 }
 
