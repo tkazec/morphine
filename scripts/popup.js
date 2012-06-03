@@ -1,7 +1,7 @@
 (function () { "use strict";
 
 var background = chrome.extension.getBackgroundPage();
-var isTab = location.search;
+var isTab = location.search && decodeURIComponent(location.search.substr(1));
 var loading = false;
 
 var $balance = $("#time-balance");
@@ -23,7 +23,7 @@ var update = window.update = function () {
 	$usecustom.text("+" + balance).parent().prop("disabled", !balance);
 	
 	if (meter && isTab && !loading) {
-		location.replace(decodeURIComponent(isTab.substr(1)));
+		location.replace(isTab);
 		
 		loading = true;
 	}
@@ -42,6 +42,8 @@ $("body").on("click", "button", function () {
 });
 
 update();
+
+isTab && $("#url").text(isTab).show();
 
 background._gaq.push(["_trackPageview", isTab ? "/tab" : "/popup"]);
 

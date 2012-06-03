@@ -18,3 +18,11 @@ button {
 .btn-tall {
 	height: 140px;
 }
+
+#url {
+	display: none;
+	overflow: hidden;
+	text-align: center;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
