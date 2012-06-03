@@ -6,7 +6,7 @@ Todo/eventual possibilities:
 
 * Fix incognito behavior.
 * Run at certain times of the day?
-* Better promo graphics.
+* Better icon and promo graphics.
 
 ---
 
