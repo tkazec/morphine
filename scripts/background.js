@@ -3,7 +3,7 @@ var _gaq = _gaq || [];
 (function () { "use strict";
 
 /*** setup ***/
-var version = "0.9.2";
+var version = "0.9.3";
 
 Data.def("charge-interval", 10);
 Data.def("charge-size", 1);
