@@ -2,6 +2,7 @@
 
 var background = chrome.extension.getBackgroundPage();
 var isTab = location.search;
+var loading = false;
 
 var $balance = $("#time-balance");
 var $meter = $("#time-meter");
@@ -21,8 +22,10 @@ var update = window.update = function () {
 	
 	$usecustom.text("+" + balance).parent().prop("disabled", !balance);
 	
-	if (meter && isTab) {
+	if (meter && isTab && !loading) {
 		location.replace(decodeURIComponent(isTab.substr(1)));
+		
+		loading = true;
 	}
 };
 
