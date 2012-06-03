@@ -53,6 +53,7 @@ var state = window.state = {
 	},
 	use: {
 		id: null,
+		seconds: null,
 		fn: function () {
 			if (--state.meter === 0) {
 				clearInterval(state.use.id);
@@ -68,11 +69,27 @@ var state = window.state = {
 				state.use.id = setInterval(state.use.fn, 1000 * 60);
 			}
 			
+			state.use.seconds = null;
+			
 			state.use.display();
 		},
 		display: function () {
+			var text = state.meter.toString();
+			
+			if (text === "0") {
+				text = "";
+			} else if (text === "1") {
+				var seconds = state.use.seconds || 60;
+				
+				text = "0:" + (seconds < 10 ? 0 : "") + seconds;
+				
+				if (state.use.seconds = --seconds) {
+					setTimeout(state.use.display, 1000);
+				}
+			}
+			
 			chrome.browserAction.setBadgeBackgroundColor({ color: state.meter > 1 ? [0, 0, 255, 255] : [255, 0, 0, 255] });
-			chrome.browserAction.setBadgeText({ text: state.meter ? state.meter.toString() : "" });
+			chrome.browserAction.setBadgeText({ text: text });
 			
 			state.sync();
 		}
