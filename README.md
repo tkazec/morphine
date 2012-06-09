@@ -2,13 +2,11 @@ Regulated distraction. https://chrome.google.com/webstore/detail/fbnpehpbojenlld
 
 ---
 
-Posts about Session Manager:
+Press:
 
 * [Morphine: Website Blocker With A Unique Reward-Based System For Unblocking](http://www.addictivetips.com/web/morphine-chrome-website-blocker-with-unique-reward-based-unblocking/)
 
----
-
-Todo/eventual possibilities:
+Todo:
 
 * Fix incognito behavior.
 * Better icon and promo graphics.
