@@ -11,6 +11,7 @@ Todo:
 * Fix incognito behavior.
 * Better icon and promo graphics.
 * Run at certain times of the day?
+* Possibly allow per-site productivity adjustment? For example, Google Reader is usually more productive than Facebook.
 
 ---
 
