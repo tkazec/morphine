@@ -5,6 +5,7 @@ Regulated distraction. https://chrome.google.com/webstore/detail/fbnpehpbojenlld
 Press:
 
 * [Morphine: Website Blocker With A Unique Reward-Based System For Unblocking](http://www.addictivetips.com/web/morphine-chrome-website-blocker-with-unique-reward-based-unblocking/)
+* [Manage your time with Morphine: a better web blocker for Chrome](http://www.freewaregenius.com/2012/06/20/manage-your-time-with-morphine-a-better-web-blocker-for-chrome/)
 
 Todo:
 
