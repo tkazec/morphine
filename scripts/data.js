@@ -5,7 +5,7 @@ var Data = window.Data = {
 		return localStorage.getItem(key) !== null;
 	},
 	get: function (key) {
-		return Data.has(key) ? JSON.parse(localStorage.getItem(key)) : null;
+		return Data.has(key) ? JSON.parse(localStorage.getItem(key)) : undefined;
 	},
 	set: function (key, val) {
 		localStorage.setItem(key, JSON.stringify(val));
