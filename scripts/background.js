@@ -127,15 +127,7 @@ var check = function (url, tID) {
 	};
 	
 	var matches = block.some(function (rule) {
-		if (apply(rule)) {
-			var allowed = allow.some(function (rule) {
-				return apply(rule);
-			});
-			
-			if (!allowed) {
-				return true;
-			}
-		}
+		return apply(rule) && !allow.some(apply);
 	});
 	
 	matches && chrome.tabs.update(tID, {
