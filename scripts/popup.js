@@ -1,7 +1,7 @@
 (function () { "use strict";
 
+/*** setup ***/
 var background = chrome.extension.getBackgroundPage();
-var isTab = location.search && decodeURIComponent(location.search.substr(1));
 var loading = false;
 
 var $balance = $("#time-balance");
@@ -9,6 +9,23 @@ var $meter = $("#time-meter");
 var $use = $("button");
 var $usecustom = $("#use-custom");
 
+var loc = new Uri(location);
+var isTab = !!loc.query().toString();
+var url = loc.getQueryParamValue("url");
+var rule = loc.getQueryParamValue("rule");
+
+if (isTab) {
+	var ruleindex = url.indexOf(rule);
+	$("#url-left").text(url.slice(0, ruleindex));
+	$("#url-rule").text(rule);
+	$("#url-right").text(url.slice(ruleindex + rule.length));
+	$("#url").show();
+}
+
+background._gaq.push(["_trackPageview", isTab ? "/tab" : "/popup"]);
+
+
+/*** sync ***/
 var update = window.update = function () {
 	var balance = background.state.balance;
 	var meter = background.state.meter;
@@ -23,12 +40,16 @@ var update = window.update = function () {
 	$usecustom.text("+" + balance).parent().prop("disabled", !balance);
 	
 	if (meter && isTab && !loading) {
-		location.replace(isTab);
+		location.replace(url);
 		
 		loading = true;
 	}
 };
 
+update();
+
+
+/*** events ***/
 $("body").on("click", "button", function () {
 	var amount = parseInt(this.innerText, 10);
 	
@@ -40,11 +61,5 @@ $("body").on("click", "button", function () {
 	
 	background.state.sync();
 });
-
-update();
-
-isTab && $("#url").text(isTab).show();
-
-background._gaq.push(["_trackPageview", isTab ? "/tab" : "/popup"]);
 
 })();

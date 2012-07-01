@@ -113,6 +113,7 @@ var check = function (url, tID) {
 	var block = Data.get("target-block");
 	var allow = Data.get("target-allow");
 	var uri = new Uri(url);
+	var match;
 	
 	var apply = function (rule) {
 		var rule = new Uri(rule);
@@ -127,11 +128,13 @@ var check = function (url, tID) {
 	};
 	
 	var matches = block.some(function (rule) {
+		match = rule;
+		
 		return apply(rule) && !allow.some(apply);
 	});
 	
 	matches && chrome.tabs.update(tID, {
-		url: "popup.html?" + encodeURIComponent(url)
+		url: new Uri("/popup.html").addQueryParam("url", url).addQueryParam("rule", match).toString()
 	});
 };
 
