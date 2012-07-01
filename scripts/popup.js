@@ -15,6 +15,8 @@ var url = loc.getQueryParamValue("url");
 var rule = loc.getQueryParamValue("rule");
 
 if (isTab) {
+	$("title").text(rule);
+	
 	var ruleindex = url.indexOf(rule);
 	$("#url-left").text(url.slice(0, ruleindex));
 	$("#url-rule").text(rule);

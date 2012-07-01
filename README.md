@@ -13,7 +13,6 @@ Todo:
 * Better icon and promo graphics.
 * Run at certain times of the day?
 * Possibly allow per-site productivity adjustment? For example, Google Reader is usually more productive than Facebook.
-* Add some identifying information to the Morphine tab title (e.g. blocking rule or a reduced URL).
 * Upgrade to the v2 manifest, with a minimum Chrome version.
 
 ---
