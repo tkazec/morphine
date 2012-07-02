@@ -26,6 +26,3 @@ button {
 	text-overflow: ellipsis;
 	white-space: nowrap;
 }
-#url-rule {
-	border-bottom: 1px dotted;
-}

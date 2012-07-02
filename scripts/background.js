@@ -134,7 +134,7 @@ var check = function (url, tID) {
 	});
 	
 	matches && chrome.tabs.update(tID, {
-		url: new Uri("/popup.html").addQueryParam("url", url).addQueryParam("rule", match).toString()
+		url: "popup.html?" + encodeURIComponent(JSON.stringify({ url: url, rule: match }))
 	});
 };
 

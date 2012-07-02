@@ -2,6 +2,7 @@
 
 /*** setup ***/
 var background = chrome.extension.getBackgroundPage();
+var isTab = location.search && JSON.parse(decodeURIComponent(location.search.slice(1)));
 var loading = false;
 
 var $balance = $("#time-balance");
@@ -9,19 +10,9 @@ var $meter = $("#time-meter");
 var $use = $("button");
 var $usecustom = $("#use-custom");
 
-var loc = new Uri(location);
-var isTab = !!loc.query().toString();
-var url = loc.getQueryParamValue("url");
-var rule = loc.getQueryParamValue("rule");
-
 if (isTab) {
-	$("title").text(rule);
-	
-	var ruleindex = url.indexOf(rule);
-	$("#url-left").text(url.slice(0, ruleindex));
-	$("#url-rule").text(rule);
-	$("#url-right").text(url.slice(ruleindex + rule.length));
-	$("#url").show();
+	$("title").text(isTab.rule);
+	$("#url").text(isTab.url).show();
 }
 
 background._gaq.push(["_trackPageview", isTab ? "/tab" : "/popup"]);
@@ -42,7 +33,7 @@ var update = window.update = function () {
 	$usecustom.text("+" + balance).parent().prop("disabled", !balance);
 	
 	if (meter && isTab && !loading) {
-		location.replace(url);
+		location.replace(isTab.url);
 		
 		loading = true;
 	}
