@@ -14,6 +14,7 @@ Todo:
 * Run at certain times of the day?
 * Possibly allow per-site productivity adjustment? For example, Google Reader is usually more productive than Facebook.
 * Upgrade to the v2 manifest, with a minimum Chrome version.
+* "Parking meter-style anti-procrastination"
 
 ---
 
