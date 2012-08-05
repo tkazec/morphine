@@ -13,6 +13,7 @@
 		"default_popup": "popup.html"
 	},
 	"background_page": "background.html",
+	"minimum_chrome_version": "18",
 	"offline_enabled": true,
 	"options_page": "options.html",
 	"permissions": ["tabs"]
