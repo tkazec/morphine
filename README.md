@@ -17,6 +17,7 @@ Todo:
 * Upgrade to the v2 manifest, with a minimum Chrome version.
 * Pause meter when switching to non-blocked tabs? See issue #1.
 * "Parking meter-style anti-procrastination"
+* Optional daily balance reset time.
 
 ---
 
