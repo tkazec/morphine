@@ -13,11 +13,14 @@ Todo:
 
 * Improve incognito behavior.
 * Improve icon and promo graphics.
-* Run at certain times of the day?
+* Run at certain times of the day? Certain times of the week, e.g. only weekdays?
 * Possibly allow per-site productivity adjustment? For example, Google Reader is usually more productive than Facebook.
-* Pause meter when switching to non-blocked tabs? See issue #1.
+* Pause meter when switching to non-blocked tabs?
 * "Parking meter-style anti-procrastination"
 * Optional daily balance reset time.
+* Disable button? (Workaround for Chrome automatically closing all open blocked tabs when disabling manually.)
+* Optional manual balance cap setting.
+* Optional personal block message setting.
 
 ---
 
