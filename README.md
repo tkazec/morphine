@@ -15,7 +15,6 @@ Todo:
 * Improve icon and promo graphics.
 * Run at certain times of the day?
 * Possibly allow per-site productivity adjustment? For example, Google Reader is usually more productive than Facebook.
-* Upgrade to the v2 manifest, with a minimum Chrome version.
 * Pause meter when switching to non-blocked tabs? See issue #1.
 * "Parking meter-style anti-procrastination"
 * Optional daily balance reset time.

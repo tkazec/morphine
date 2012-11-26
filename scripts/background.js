@@ -25,6 +25,12 @@ _gaq.push(
 !Data.has("version") && window.open("options.html?firstrun");
 Data.set("version", version);
 
+document.body.appendChild(function () {
+	var el = document.createElement("script");
+	el.src = "https://ssl.google-analytics.com/ga.js";
+	return el;
+}());
+
 
 /*** state ***/
 var state = window.state = {
