@@ -14,10 +14,10 @@
 		"default_popup": "popup.html"
 	},
 	"background": {
-		"scripts": ["scripts/jsuri.js", "scripts/data.js", "scripts/background.js"]
+		"scripts": ["scripts/errors.js", "scripts/jsuri.js", "scripts/data.js", "scripts/background.js"]
 	},
-	"content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
-	"minimum_chrome_version": "18",
+	"content_security_policy": "script-src 'self' https://d2tf6sbdgil6xr.cloudfront.net https://submit.ratchet.io https://ssl.google-analytics.com; object-src 'self'",
+	"minimum_chrome_version": "20",
 	"offline_enabled": true,
 	"options_page": "options.html",
 	"permissions": ["tabs"],
