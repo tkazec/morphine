@@ -14,6 +14,6 @@ rm build.sh
 rm -rf .git
 
 sed -i '' -e "s/##GA##/$GAID/" scripts/background.js
-sed -i '' -e "s/##RATCHET##/$RATCHETID/" js/errors.js
+sed -i '' -e "s/##RATCHET##/$RATCHETID/" scripts/errors.js
 
 find . -path '*/.*' -prune -o -type f -print | zip morphine.zip -@
