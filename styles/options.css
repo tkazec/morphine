@@ -1,5 +1,9 @@
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+}
+
 input[type="range"] {
-	width: 100%; /* TODO tempfix for bootstrap 2.0.4 */
+	width: 100%;
 }
 
 label {
@@ -19,7 +23,6 @@ label {
 	margin: 9px 0;
 }
 .thumbnail > .caption {
-	line-height: 18px; /* TODO tempfix for bootstrap 2.0.4 */
 	padding-bottom: 0;
 }
 
