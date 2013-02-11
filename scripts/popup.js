@@ -1,6 +1,8 @@
-(function () { "use strict";
+(function () {
 
-/*** setup ***/
+///////////////////////////////////////////////////////////////////////////////
+// Setup
+///////////////////////////////////////////////////////////////////////////////
 var background = chrome.extension.getBackgroundPage();
 var isTab = location.search && JSON.parse(decodeURIComponent(location.search.slice(1)));
 var loading = false;
@@ -18,7 +20,9 @@ if (isTab) {
 background._gaq.push(["_trackPageview", isTab ? "/tab" : "/popup"]);
 
 
-/*** sync ***/
+///////////////////////////////////////////////////////////////////////////////
+// Sync
+///////////////////////////////////////////////////////////////////////////////
 var update = window.update = function () {
 	var balance = background.state.balance;
 	var meter = background.state.meter;
@@ -42,7 +46,9 @@ var update = window.update = function () {
 update();
 
 
-/*** events ***/
+///////////////////////////////////////////////////////////////////////////////
+// Events
+///////////////////////////////////////////////////////////////////////////////
 $("body").on("click", "button", function () {
 	var amount = parseInt(this.innerText, 10);
 	

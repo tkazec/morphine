@@ -1,4 +1,4 @@
-(function () { "use strict";
+(function () {
 
 var Data = window.Data = {
 	has: function (key) {
