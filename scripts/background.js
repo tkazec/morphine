@@ -5,7 +5,7 @@ var _gaq = _gaq || [];
 ///////////////////////////////////////////////////////////////////////////////
 // Setup
 ///////////////////////////////////////////////////////////////////////////////
-var version = "1.0.3";
+var version = "1.0.4";
 
 Data.def("charge-interval", 10);
 Data.def("charge-size", 1);
@@ -16,7 +16,7 @@ Data.def("target-allow", []);
 Data.def("balance", 0);
 
 _gaq.push(
-	["_setAccount", "##GA##"],
+	["_setAccount", "##GAID##"],
 	["_setSessionCookieTimeout", 0],
 	["_setCustomVar", 1, "Version", version, 1],
 	["_setCustomVar", 2, "ChargeInterval", Data.get("charge-interval").toString(), 1],

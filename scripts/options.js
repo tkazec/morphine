@@ -68,14 +68,4 @@ target.$allow.on("input", function () {
 target.$block.val(target.get("block"));
 target.$allow.val(target.get("allow"));
 
-
-///////////////////////////////////////////////////////////////////////////////
-// Changelog
-///////////////////////////////////////////////////////////////////////////////
-$("#changelog-show").click(function () {
-	$("#changelog").children().css("display", "block");
-	
-	$(this).remove();
-});
-
 })();
