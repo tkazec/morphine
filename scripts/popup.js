@@ -49,7 +49,11 @@ update();
 ///////////////////////////////////////////////////////////////////////////////
 // Events
 ///////////////////////////////////////////////////////////////////////////////
-$("body").on("click", "button", function () {
+$("body").on("focus", "*", function () {
+	!isTab && this.blur();
+	
+	$("body").off("focus", "*");
+}).on("click", "button", function () {
 	var amount = parseInt(this.innerText, 10);
 	
 	background.state.balance -= amount;
