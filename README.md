@@ -21,6 +21,7 @@ Todo:
 * Disable button? (Workaround for Chrome automatically closing all open blocked tabs when disabling manually.)
 * Optional manual balance cap setting.
 * Optional personal block message setting.
+* Balance reset button.
 
 ---
 
