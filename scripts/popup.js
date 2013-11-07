@@ -31,7 +31,7 @@ var update = window.update = function () {
 	$meter.text(meter).toggleClass("badge-warning", !!meter);
 	
 	$use.each(function () {
-		this.disabled = parseInt(this.innerText, 10) > balance;
+		this.disabled = parseInt(this.textContent, 10) > balance;
 	});
 	
 	$usecustom.text("+" + balance).parent().prop("disabled", !balance);
@@ -54,7 +54,7 @@ $("body").on("focus", "*", function () {
 	
 	$("body").off("focus", "*");
 }).on("click", "button", function () {
-	var amount = parseInt(this.innerText, 10);
+	var amount = parseInt(this.textContent, 10);
 	
 	background.state.balance -= amount;
 	background.state.meter += amount;
