@@ -1,4 +1,4 @@
-Regulated distraction. https://chrome.google.com/webstore/detail/fbnpehpbojenlldmfcopeajkichnnjpo
+“Regulated distraction.” Productivity for Chrome. https://chrome.google.com/webstore/detail/fbnpehpbojenlldmfcopeajkichnnjpo
 
 ---
 
@@ -8,6 +8,7 @@ Press:
 * [Manage your time with Morphine: a better web blocker for Chrome](http://www.freewaregenius.com/2012/06/20/manage-your-time-with-morphine-a-better-web-blocker-for-chrome/)
 * [PCWorld Editorial Review of Morphine](http://www.pcworld.com/downloads/file/fid,232036-order,4/description.html)
 * [Stop Wasting Time with a Simple Chrome Extension](http://revision3.com/tzdaily/morphine-productivity)
+* [با کمک مورفین تمرکز و خلاقیت خود را افزایش دهید](http://www.tabnak.ir/fa/news/366398)
 
 Todo:
 
