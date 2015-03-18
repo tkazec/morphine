@@ -11,6 +11,7 @@ var $balance = $("#time-balance");
 var $meter = $("#time-meter");
 var $use = $("button");
 var $usecustom = $("#use-custom");
+var $reset = $("#reset-balance");
 
 if (isTab) {
 	$("title").text(isTab.rule);
@@ -36,6 +37,10 @@ var update = window.update = function () {
 	
 	$usecustom.text("+" + balance).parent().prop("disabled", !balance);
 	
+	// reset balance (if available)
+	$reset.text("Dump Balance -" + balance).parent().prop("disabled", !balance);
+
+	
 	if (meter && isTab && !loading) {
 		location.replace(isTab.url);
 		
@@ -49,6 +54,8 @@ update();
 ///////////////////////////////////////////////////////////////////////////////
 // Events
 ///////////////////////////////////////////////////////////////////////////////
+
+// add to meter, reduce balance
 $("body").on("focus", "*", function () {
 	!isTab && this.blur();
 	
@@ -58,6 +65,24 @@ $("body").on("focus", "*", function () {
 	
 	background.state.balance -= amount;
 	background.state.meter += amount;
+	background.state.use.start();
+	
+	background._gaq.push(["_trackEvent", "Balance", "Use", isTab ? "tab" : "popup", amount]);
+	
+	background.state.sync();
+});
+
+// reset balance completely, do not add to meter
+$reset.on("focus", "*", function () {
+	!isTab && this.blur();
+	
+	$("body").off("focus", "*");
+}).on("click", "button", function () {
+	// amount is equal to whole balance
+	var amount = balance;
+	
+	// resets balance
+	background.state.balance -= amount;
 	background.state.use.start();
 	
 	background._gaq.push(["_trackEvent", "Balance", "Use", isTab ? "tab" : "popup", amount]);
