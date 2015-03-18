@@ -36,7 +36,7 @@ var update = window.update = function () {
 	});
 	
 	$usecustom.text("+" + balance).parent().prop("disabled", !balance);
-	
+
 	// reset balance (if available)
 	$reset.text("Dump Balance -" + balance).parent().prop("disabled", !balance);
 
@@ -78,11 +78,14 @@ $reset.on("focus", "*", function () {
 	
 	$("body").off("focus", "*");
 }).on("click", "button", function () {
-	// amount is equal to whole balance
-	var amount = balance;
-	
+
 	// resets balance
-	background.state.balance -= amount;
+	background.state.balance = 0;
+
+	/* TODO: Currently, there's an issue where doing this sets the meter to 'NaN'
+	   Also, balance shows null instead of 0. Review the codebase more and fix.
+	*/
+
 	background.state.use.start();
 	
 	background._gaq.push(["_trackEvent", "Balance", "Use", isTab ? "tab" : "popup", amount]);
