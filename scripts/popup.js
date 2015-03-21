@@ -11,7 +11,8 @@ var $balance = $("#time-balance");
 var $meter = $("#time-meter");
 var $use = $("button");
 var $usecustom = $("#use-custom");
-var $reset = $("#reset-balance");
+var $resetbalance = $("#reset-balance");
+var $resetmeter = $("#reset-meter");
 
 if (isTab) {
 	$("title").text(isTab.rule);
@@ -38,7 +39,9 @@ var update = window.update = function () {
 	$usecustom.text("+" + balance).parent().prop("disabled", !balance);
 
 	// reset balance (if available)
-	$reset.text("Dump Balance -" + balance).parent().prop("disabled", !balance);
+	$resetbalance.text("Dump Balance").parent().prop("disabled", !balance);
+	// reset meter (if available)
+	$resetmeter.text("Dump Meter").parent().prop("disabled", !meter);
 
 	
 	if (meter && isTab && !loading) {
@@ -56,10 +59,10 @@ update();
 ///////////////////////////////////////////////////////////////////////////////
 
 // add to meter, reduce balance
-$("body").on("focus", "*", function () {
+$(".add-charge").on("focus", "*", function () {
 	!isTab && this.blur();
 	
-	$("body").off("focus", "*");
+	$(".add-charge").off("focus", "*");
 }).on("click", "button", function () {
 	var amount = parseInt(this.textContent, 10);
 	
@@ -72,22 +75,31 @@ $("body").on("focus", "*", function () {
 	background.state.sync();
 });
 
-// reset balance completely, do not add to meter
-$reset.on("focus", "*", function () {
+// dumps balance completely, does not add to meter (if currently existing)
+$(".dump-charge").on("focus", "*", function () {
 	!isTab && this.blur();
 	
-	$("body").off("focus", "*");
+	$(".dump-charge").off("focus", "*");
 }).on("click", "button", function () {
 
 	// resets balance
 	background.state.balance = 0;
-
-	/* TODO: Currently, there's an issue where doing this sets the meter to 'NaN'
-	   Also, balance shows null instead of 0. Review the codebase more and fix.
-	*/
-
 	background.state.use.start();
+	background._gaq.push(["_trackEvent", "Balance", "Use", isTab ? "tab" : "popup", amount]);
 	
+	background.state.sync();
+});
+
+// dumps meter (if currently existing)
+$(".dump-meter").on("focus", "*", function () {
+	!isTab && this.blur();
+	
+	$(".dump-meter").off("focus", "*");
+}).on("click", "button", function () {
+
+	// resets meter
+	background.state.meter = 0;
+	background.state.use.start();
 	background._gaq.push(["_trackEvent", "Balance", "Use", isTab ? "tab" : "popup", amount]);
 	
 	background.state.sync();

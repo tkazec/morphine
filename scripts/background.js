@@ -85,19 +85,21 @@ var state = window.state = {
 		},
 		display: function () {
 			var text = state.meter.toString();
-			
 			if (text === "0") {
 				text = "";
 			} else if (text === "1") {
-				var seconds = state.use.seconds || 60;
+				var seconds;
+				seconds = state.use.seconds || 60;
+				// if state.use.seconds is falsy, this assigment does not occur
 				
 				text = "0:" + (seconds < 10 ? 0 : "") + seconds;
+				// if less than 10 seconds, add leading zero for seconds column
 				
 				if (state.use.seconds = --seconds) {
 					setTimeout(state.use.display, 1000);
 				}
 			}
-			
+				
 			chrome.browserAction.setBadgeBackgroundColor({ color: state.meter > 1 ? [0, 0, 255, 255] : [255, 0, 0, 255] });
 			chrome.browserAction.setBadgeText({ text: text });
 			
