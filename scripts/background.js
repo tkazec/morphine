@@ -7,7 +7,7 @@ var _gaq = _gaq || [];
 ///////////////////////////////////////////////////////////////////////////////
 var version = "1.0.5";
 
-Data.def("charge-interval", 10);
+Data.def("charge-interval", 0.01);
 Data.def("charge-size", 1);
 
 Data.def("target-block", []);

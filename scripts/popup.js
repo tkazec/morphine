@@ -75,7 +75,6 @@ $(".add-meter").on("focus", "*", function () {
 	background.state.sync();
 });
 
-// dumps balance completely, does not add to meter (if currently existing)
 $(".dump-balance").on("focus", "*", function () {
 	!isTab && this.blur();
 	
@@ -84,7 +83,6 @@ $(".dump-balance").on("focus", "*", function () {
 
 	// resets balance
 	background.state.balance = 0;
-	background.state.use.start();
 	background._gaq.push(["_trackEvent", "Balance", "Use", isTab ? "tab" : "popup", amount]);
 	
 	background.state.sync();
