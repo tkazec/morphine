@@ -59,10 +59,10 @@ update();
 ///////////////////////////////////////////////////////////////////////////////
 
 // add to meter, reduce balance
-$(".add-charge").on("focus", "*", function () {
+$(".add-meter").on("focus", "*", function () {
 	!isTab && this.blur();
 	
-	$(".add-charge").off("focus", "*");
+	$(".add-meter").off("focus", "*");
 }).on("click", "button", function () {
 	var amount = parseInt(this.textContent, 10);
 	
@@ -76,10 +76,10 @@ $(".add-charge").on("focus", "*", function () {
 });
 
 // dumps balance completely, does not add to meter (if currently existing)
-$(".dump-charge").on("focus", "*", function () {
+$(".dump-balance").on("focus", "*", function () {
 	!isTab && this.blur();
 	
-	$(".dump-charge").off("focus", "*");
+	$(".dump-balance").off("focus", "*");
 }).on("click", "button", function () {
 
 	// resets balance
