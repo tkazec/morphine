@@ -11,8 +11,8 @@ var $balance = $("#time-balance");
 var $meter = $("#time-meter");
 var $use = $("button");
 var $usecustom = $("#use-custom");
-var $resetbalance = $("#reset-balance");
-var $resetmeter = $("#reset-meter");
+var $resetbalance = $("#reset-balance"); // added new button for resetting balance
+var $resetmeter = $("#reset-meter"); // added new button for resetting meter
 
 if (isTab) {
 	$("title").text(isTab.rule);
