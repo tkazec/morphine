@@ -98,7 +98,7 @@ $(".dump-meter").on("focus", "*", function () {
 }).on("click", "button", function () {
 
 	// resets meter
-	background.state.meter = 0;
+	background.state.meter -= background.state.meter;
 	background.state.use.start();
 	background._gaq.push(["_trackEvent", "Balance", "Use", isTab ? "tab" : "popup", amount]);
 	

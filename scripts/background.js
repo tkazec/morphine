@@ -65,7 +65,13 @@ var state = window.state = {
 		id: null,
 		seconds: null,
 		fn: function () {
-			if (--state.meter === 0) {
+			if (--state.meter === 0 ) {
+				clearInterval(state.use.id);
+				state.use.id = null;
+				
+				checkall();
+			} else if (state.meter === -1) { // case after meter is reset (avoid negative meter)
+				state.meter = 0;
 				clearInterval(state.use.id);
 				state.use.id = null;
 				
