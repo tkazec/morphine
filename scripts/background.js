@@ -94,7 +94,7 @@ var state = window.state = {
 			if (text === "0") {
 				text = "";
 			} else if (text === "1") {
-				// if state.use.seconds is falsy, this assigment does not occur
+				// seconds assigned 60 if state.use.seconds is null
 				var seconds = state.use.seconds || 60;
 				
 				// if less than 10 seconds, add leading zero for seconds column
@@ -113,7 +113,7 @@ var state = window.state = {
 	},
 	sync: function () {
 		chrome.extension.getViews().forEach(function (tab) {
-			typeof tab.update === "function" && tab.update();
+			typeof tab.update === "function" && tab.update(); // if tab.update function is defined, call tab.update()
 		});
 	}
 };
