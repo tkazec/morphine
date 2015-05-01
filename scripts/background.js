@@ -7,7 +7,7 @@ var _gaq = _gaq || [];
 ///////////////////////////////////////////////////////////////////////////////
 var version = "1.0.5";
 
-Data.def("charge-interval", 10);
+Data.def("charge-interval", 0.1);
 Data.def("charge-size", 1);
 
 Data.def("target-block", []);
@@ -68,14 +68,12 @@ var state = window.state = {
 			if (--state.meter === 0 ) {
 				clearInterval(state.use.id);
 				state.use.id = null;
-				
-				checkall();
+				monitor.checkall();
 			} else if (state.meter === -1) { // case after meter is reset (avoid negative meter)
 				state.meter = 0;
 				clearInterval(state.use.id);
 				state.use.id = null;
-				
-				checkall();
+				monitor.checkall();
 			}
 			
 			state.use.display();
@@ -152,17 +150,19 @@ var check = function (url, tID) {
 		return apply(rule) && !allow.some(apply);
 	});
 	
-	matches && chrome.tabs.update(tID, {
+	matches && chrome.tabs.update(tID, { // load popup.html if in block list and not in allowed list
 		url: "popup.html?" + encodeURIComponent(JSON.stringify({ url: url, rule: match }))
 	});
 };
 
-var checkall = function () {
-	chrome.tabs.query({}, function (tabs) {
-		tabs.forEach(function (tab) {
-			check(tab.url, tab.id);
+var monitor = window.monitor = { // public caller for checkall
+	checkall: function() {
+		chrome.tabs.query({}, function (tabs) {
+			tabs.forEach(function (tab) {
+				check(tab.url, tab.id);
+			});
 		});
-	});
+	}
 };
 
 chrome.tabs.onCreated.addListener(function (tab) {

@@ -57,7 +57,6 @@ update();
 ///////////////////////////////////////////////////////////////////////////////
 // Events
 ///////////////////////////////////////////////////////////////////////////////
-
 // add to meter, reduce balance
 $(".add-meter").on("focus", "*", function () {
 	!isTab && this.blur();
@@ -83,7 +82,8 @@ $(".dump-balance").on("focus", "*", function () {
 }).on("click", "button", function () {
 
 	// resets balance
-	background.state.balance -= background.state.balance;
+	var amount = background.state.balance;
+	background.state.balance -= amount;
 	background.state.sync();
 	background._gaq.push(["_trackEvent", "Balance", "Use", isTab ? "tab" : "popup", amount]);
 });
@@ -96,10 +96,12 @@ $(".dump-meter").on("focus", "*", function () {
 }).on("click", "button", function () {
 
 	// resets meter
-	background.state.meter -= background.state.meter;
+	var amount = background.state.meter;
+	background.state.meter -= amount;
 	background.state.use.start();
 	background._gaq.push(["_trackEvent", "Balance", "Use", isTab ? "tab" : "popup", amount]);
 	background.state.sync();
+	background.monitor.checkall(); // load popup.html page
 });
 
 })();
