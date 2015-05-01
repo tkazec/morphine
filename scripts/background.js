@@ -68,12 +68,12 @@ var state = window.state = {
 			if (--state.meter === 0 ) {
 				clearInterval(state.use.id);
 				state.use.id = null;
-				monitor.checkall();
+				checkall();
 			} else if (state.meter === -1) { // case after meter is reset (avoid negative meter)
 				state.meter = 0;
 				clearInterval(state.use.id);
 				state.use.id = null;
-				monitor.checkall();
+				checkall();
 			}
 			
 			state.use.display();
@@ -155,13 +155,17 @@ var check = function (url, tID) {
 	});
 };
 
+var checkall = function () {
+	chrome.tabs.query({}, function (tabs) {
+		tabs.forEach(function (tab) {
+			check(tab.url, tab.id);
+		});
+	});
+};
+
 var monitor = window.monitor = { // public caller for checkall
 	checkall: function() {
-		chrome.tabs.query({}, function (tabs) {
-			tabs.forEach(function (tab) {
-				check(tab.url, tab.id);
-			});
-		});
+		checkall();
 	}
 };
 
