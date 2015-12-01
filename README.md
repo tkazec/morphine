@@ -10,11 +10,11 @@ Press:
 * [Stop Wasting Time with a Simple Chrome Extension](http://revision3.com/tzdaily/morphine-productivity)
 * [با کمک مورفین تمرکز و خلاقیت خود را افزایش دهید](http://www.tabnak.ir/fa/news/366398)
 
-Todo:
+Ideas:
 
 * Improve incognito behavior.
 * Improve icon and promo graphics.
-* Run at certain times of the day? Certain times of the week, e.g. only weekdays?
+* Only enforce blocking at certain times of the day? Certain times of the week, e.g. only weekdays?
 * Possibly allow per-site productivity adjustment? For example, Google Reader is usually more productive than Facebook.
 * Pause meter when switching to non-blocked tabs?
 * "Parking meter-style anti-procrastination"
@@ -23,6 +23,10 @@ Todo:
 * Optional manual balance cap setting.
 * Optional personal block message setting.
 * Balance reset button.
+* Only accrue balance during certain times of the day.
+* Quick-add current domain to block list.
+* Personal block page message(s).
+* Disable option that doesn't close all blocked tabs.
 
 ---
 
