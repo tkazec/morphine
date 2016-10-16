@@ -1,3 +1,8 @@
+a:hover {
+	cursor: pointer;
+	text-decoration: unset;
+}
+
 body {
 	padding: 5px 10px 0 10px;
 }
@@ -7,12 +12,12 @@ button {
 	margin: 10px 0 !important;
 }
 
-.container {
-	width: 300px;
-}
-
 .btn-tall {
 	height: 140px;
+}
+
+.container {
+	width: 300px;
 }
 
 #url {

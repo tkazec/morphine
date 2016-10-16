@@ -7,12 +7,12 @@ var background = chrome.extension.getBackgroundPage();
 var isTab = location.search && JSON.parse(decodeURIComponent(location.search.slice(1)));
 var loading = false;
 
-var $balance = $("#time-balance");
-var $meter = $("#time-meter");
+var $balanceState = $("#balance-state");
+var $balanceReset = $("#balance-reset");
+var $meterState = $("#meter-state");
+var $meterReset = $("#meter-reset");
 var $use = $("button");
 var $usecustom = $("#use-custom");
-var $resetbalance = $("#reset-balance"); // added new button for resetting balance
-var $resetmeter = $("#reset-meter"); // added new button for resetting meter
 
 if (isTab) {
 	$("title").text(isTab.rule);
@@ -29,20 +29,14 @@ var update = window.update = function () {
 	var balance = background.state.balance;
 	var meter = background.state.meter;
 	
-	$balance.text(balance).toggleClass("badge-info", !!balance);
-	$meter.text(meter).toggleClass("badge-warning", !!meter);
+	$balanceState.text(balance).toggleClass("badge-info", !!balance);
+	$meterState.text(meter).toggleClass("badge-warning", !!meter);
 	
 	$use.each(function () {
 		this.disabled = parseInt(this.textContent, 10) > balance;
 	});
 	
 	$usecustom.text("+" + balance).parent().prop("disabled", !balance);
-
-	// reset balance (if available)
-	$resetbalance.text("Dump Balance").parent().prop("disabled", !balance);
-	// reset meter (if available)
-	$resetmeter.text("Dump Meter").parent().prop("disabled", !meter);
-
 	
 	if (meter && isTab && !loading) {
 		location.replace(isTab.url);
