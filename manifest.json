@@ -22,7 +22,7 @@
 	"offline_enabled": true,
 	"options_page": "options.html",
 	"options_ui": {
-		"chrome_style": true,
+		"chrome_style": false,
 		"page": "options.html"
 	},
 	"permissions": ["tabs"],
