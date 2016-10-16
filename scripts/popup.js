@@ -51,51 +51,33 @@ update();
 ///////////////////////////////////////////////////////////////////////////////
 // Events
 ///////////////////////////////////////////////////////////////////////////////
-// add to meter, reduce balance
-$(".add-meter").on("focus", "*", function () {
+$("body").on("focus", "*", function () {
 	!isTab && this.blur();
 	
-	$(".add-meter").off("focus", "*");
+	$("body").off("focus", "*");
 }).on("click", "button", function () {
 	var amount = parseInt(this.textContent, 10);
 	
 	background.state.balance -= amount;
 	background.state.meter += amount;
 	background.state.use.start();
-	
-	background._gaq.push(["_trackEvent", "Balance", "Use", isTab ? "tab" : "popup", amount]);
-	
 	background.state.sync();
-});
-
-// dumps balance (if currently existing)
-$(".dump-balance").on("focus", "*", function () {
-	!isTab && this.blur();
 	
-	$(".dump-balance").off("focus", "*");
-}).on("click", "button", function () {
-
-	// resets balance
-	var amount = background.state.balance;
-	background.state.balance -= amount;
-	background.state.sync();
 	background._gaq.push(["_trackEvent", "Balance", "Use", isTab ? "tab" : "popup", amount]);
 });
 
-// dumps meter (if currently existing)
-$(".dump-meter").on("focus", "*", function () {
-	!isTab && this.blur();
-	
-	$(".dump-meter").off("focus", "*");
-}).on("click", "button", function () {
-
-	// resets meter
-	var amount = background.state.meter;
-	background.state.meter -= amount;
-	background.state.use.start();
-	background._gaq.push(["_trackEvent", "Balance", "Use", isTab ? "tab" : "popup", amount]);
+$("#balance-reset").click(function () {
+	background.state.balance = 0;
 	background.state.sync();
-	background.monitor.checkall(); // load popup.html page
+	
+	background._gaq.push(["_trackEvent", "Balance", "Reset", isTab ? "tab" : "popup"]);
+});
+
+$("#meter-reset").click(function () {
+	background.state.meter = 1;
+	background.state.use.fn();
+	
+	background._gaq.push(["_trackEvent", "Meter", "Reset", isTab ? "tab" : "popup"]);
 });
 
 })();

@@ -65,14 +65,10 @@ var state = window.state = {
 		id: null,
 		seconds: null,
 		fn: function () {
-			if (--state.meter === 0 ) {
+			if (--state.meter === 0) {
 				clearInterval(state.use.id);
 				state.use.id = null;
-				checkall();
-			} else if (state.meter === -1) { // case after meter is reset (avoid negative meter)
-				state.meter = 0;
-				clearInterval(state.use.id);
-				state.use.id = null;
+				
 				checkall();
 			}
 			
@@ -92,17 +88,15 @@ var state = window.state = {
 			if (text === "0") {
 				text = "";
 			} else if (text === "1") {
-				// seconds assigned 60 if state.use.seconds is null
 				var seconds = state.use.seconds || 60;
 				
-				// if less than 10 seconds, add leading zero for seconds column
 				text = "0:" + (seconds < 10 ? 0 : "") + seconds;
 				
 				if (state.use.seconds = --seconds) {
 					setTimeout(state.use.display, 1000);
 				}
 			}
-				
+			
 			chrome.browserAction.setBadgeBackgroundColor({ color: state.meter > 1 ? [0, 0, 255, 255] : [255, 0, 0, 255] });
 			chrome.browserAction.setBadgeText({ text: text });
 			
@@ -111,7 +105,7 @@ var state = window.state = {
 	},
 	sync: function () {
 		chrome.extension.getViews().forEach(function (tab) {
-			typeof tab.update === "function" && tab.update(); // if tab.update function is defined, call tab.update()
+			typeof tab.update === "function" && tab.update();
 		});
 	}
 };
@@ -150,7 +144,7 @@ var check = function (url, tID) {
 		return apply(rule) && !allow.some(apply);
 	});
 	
-	matches && chrome.tabs.update(tID, { // load popup.html if in block list and not in allowed list
+	matches && chrome.tabs.update(tID, {
 		url: "popup.html?" + encodeURIComponent(JSON.stringify({ url: url, rule: match }))
 	});
 };
@@ -161,12 +155,6 @@ var checkall = function () {
 			check(tab.url, tab.id);
 		});
 	});
-};
-
-var monitor = window.monitor = { // public caller for checkall
-	checkall: function() {
-		checkall();
-	}
 };
 
 chrome.tabs.onCreated.addListener(function (tab) {
