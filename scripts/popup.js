@@ -7,8 +7,10 @@ var background = chrome.extension.getBackgroundPage();
 var isTab = location.search && JSON.parse(decodeURIComponent(location.search.slice(1)));
 var loading = false;
 
-var $balance = $("#time-balance");
-var $meter = $("#time-meter");
+var $balanceState = $("#balance-state");
+var $balanceReset = $("#balance-reset");
+var $meterState = $("#meter-state");
+var $meterReset = $("#meter-reset");
 var $use = $("button");
 var $usecustom = $("#use-custom");
 
@@ -27,8 +29,8 @@ var update = window.update = function () {
 	var balance = background.state.balance;
 	var meter = background.state.meter;
 	
-	$balance.text(balance).toggleClass("badge-info", !!balance);
-	$meter.text(meter).toggleClass("badge-warning", !!meter);
+	$balanceState.text(balance).toggleClass("badge-info", !!balance);
+	$meterState.text(meter).toggleClass("badge-warning", !!meter);
 	
 	$use.each(function () {
 		this.disabled = parseInt(this.textContent, 10) > balance;
@@ -61,8 +63,20 @@ $("body").on("focus", "*", function () {
 	background.state.use.start();
 	
 	background._gaq.push(["_trackEvent", "Balance", "Use", isTab ? "tab" : "popup", amount]);
-	
+});
+
+$("#balance-reset").click(function () {
+	background.state.balance = 0;
 	background.state.sync();
+	
+	background._gaq.push(["_trackEvent", "Balance", "Reset", isTab ? "tab" : "popup"]);
+});
+
+$("#meter-reset").click(function () {
+	background.state.meter = 1;
+	background.state.use.fn();
+	
+	background._gaq.push(["_trackEvent", "Meter", "Reset", isTab ? "tab" : "popup"]);
 });
 
 })();

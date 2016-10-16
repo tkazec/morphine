@@ -9,13 +9,15 @@
 	<body>
 		<div class="container">
 			<div class="row">
-				<div class="span2">
-					<span id="time-balance" class="badge"></span> <span class="muted">Balance</span>
-				</div>
+				<a id="balance-reset" class="span2">
+					<span id="balance-state" class="badge"></span>
+					<span class="muted">Balance &times;</span>
+				</a>
 				
-				<div class="span2 text-right">
-					<span class="muted">Meter</span> <span id="time-meter" class="badge"></span>
-				</div>
+				<a id="meter-reset" class="span2 text-right">
+					<span class="muted">&times; Meter</span>
+					<span id="meter-state" class="badge"></span>
+				</a>
 			</div>
 			
 			<button class="btn btn-large btn-tall span4"><span class="label label-success">+1</span></button>
