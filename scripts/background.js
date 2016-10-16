@@ -85,6 +85,7 @@ var state = window.state = {
 		},
 		display: function () {
 			var text = state.meter.toString();
+			
 			if (text === "0") {
 				text = "";
 			} else if (text === "1") {

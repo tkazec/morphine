@@ -61,7 +61,6 @@ $("body").on("focus", "*", function () {
 	background.state.balance -= amount;
 	background.state.meter += amount;
 	background.state.use.start();
-	background.state.sync();
 	
 	background._gaq.push(["_trackEvent", "Balance", "Use", isTab ? "tab" : "popup", amount]);
 });
