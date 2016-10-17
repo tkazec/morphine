@@ -12,12 +12,12 @@ Wishlist:
 
 Ideas:
 
+* Pause meter. (#1)
+* Manual balance cap. (#2)
+* Disabled ranges. (#4)
 * Daily balance reset time.
-* Manual balance cap setting.
 * Quick add current domain to block list.
-* Pause meter when switching to non-blocked tabs.
 * Only accrue balance during certain times of the day.
-* Only enforce blocking at certain times of the day or week.
 
 ---
 
