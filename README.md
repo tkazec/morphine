@@ -9,6 +9,12 @@ Wishlist:
 * Custom block page messages.
 * Improved incognito support.
 * Improved "disable" support.
+* Add checkbox option to disable changing chrome extension without a shot of.
+  morphine. Likewise it should allow ?? shots to disable.
+* Add option for starting balance -- e.g. every new work session we get 10 min.
+* Add RegEx or wildcard support.
+* Monitor sites most used and with one click can add to blocklist.
+
 
 Ideas:
 
