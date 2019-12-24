@@ -22,7 +22,7 @@ var charge = {
 
 charge.$interval.change(function (e, real) {
 	charge.$intervaltext.text("(every " + this.value + " minutes)");
-	charge.$size.prop("max", (this.value / 10) * 2).change();
+	charge.$size.prop("max", (this.value / 10) * 3).change();
 	
 	Data.set("charge-interval", this.valueAsNumber);
 	
