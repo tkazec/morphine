@@ -24,6 +24,8 @@ Ideas:
 * Daily balance reset time.
 * Quick add current domain to block list.
 * Only accrue balance during certain times of the day.
+* Buy more morphine.
+* Show ads on block page to support project?
 
 ---
 
