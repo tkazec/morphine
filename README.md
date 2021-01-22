@@ -1,3 +1,6 @@
+This project aims to port the below Google Chrome extension to Firefox and then extend it while also supporting compatibility with Chrome.
+
+
 “Regulated distraction.” Productivity for Chrome. https://chrome.google.com/webstore/detail/fbnpehpbojenlldmfcopeajkichnnjpo
 
 ---
