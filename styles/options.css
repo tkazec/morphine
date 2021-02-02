@@ -1,11 +1,29 @@
 body {
-	margin: 0px 20px 10px 20px;
+	margin: 15px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	line-height: 20px;
 }
 
 html {
-	align-items: center;
+/*	align-items: center;
 	display: flex;
 	flex-direction: column;
+*/
+}
+
+.container {
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 700px;
+}
+
+#target-block, #target-allow {
+	width: 90%;
+}
+
+img {
+	width: 300px;
+	margin: 10px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -30,13 +48,3 @@ label {
 	padding-bottom: 5px;
 }
 
-.thumbnails {
-	margin-bottom: 0;
-}
-
-.thumbnail > hr {
-	margin: 9px 0;
-}
-.thumbnail > .caption {
-	padding-bottom: 0;
-}

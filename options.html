@@ -4,8 +4,6 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Morphine options</title>
-		<link rel="stylesheet" href="styles/bootstrap.css">
-		<link rel="stylesheet" href="styles/bootstrap-responsive.css">
 		<link rel="stylesheet" href="styles/options.css">
 	</head>
 	<body>
@@ -21,80 +19,46 @@
 				<h2>Options</h2>
 			</div>
 			
-			<div class="row">
-				<div class="span6">
+			<div>
+				<div>
 					<h4>Charging</h4>
 				</div>
-				
-				<div class="span6">
-					<div class="row">
-						<div class="span3">
-							<label for="charge-interval">Interval <output for="charge-interval" class="muted"></output></label>
-						</div>
-						
-						<div class="span3">
-							<label for="charge-size">Size <output for="charge-size" class="muted"></output></label>
-						</div>
-					</div>
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="span6">
+				<div>
 					<p>Set the optimal time balance charge rate for you! With the default settings, +1 minute will be given every 10 minutes, but it can be adjusted for optimal productivity, distraction, and attention span levels.</p>
 				</div>
-				
-				<div class="span6">
-					<div class="row">
-						<div class="span3">
-							<input type="range" class="span3" id="charge-interval" min="10" max="60" step="5">
-						</div>
-						
-						<div class="span3">
-							<input type="range" class="span3" id="charge-size" min="1" max="12" step="1">
-						</div>
-					</div>
+
+				<div>
+					Interval <span id="charge-interval-output">&nbsp;</span><br/>
+					<input type="range" id="charge-interval" min="1" max="60" step="5">
+				</div>
+				<div>
+					Size <span id="charge-size-output">&nbsp;</span><br/>
+					<input type="range" id="charge-size" min="1" max="15" step="1">
 				</div>
 			</div>
-			
-			<div class="row">
-				<div class="span6">
+
+			<br/>
+
+			<div>
+				<div>
 					<h4>Blocking</h4>
 				</div>
-				
-				<div class="span6">
-					<div class="row">
-						<div class="span3">
-							<label for="target-block">Blocked sites</label>
-						</div>
-						
-						<div class="span3">
-							<label for="target-allow">Allowed sites</label>
-						</div>
-					</div>
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="span6">
+				<div>
 					<p>Add sites to block and (optionally) allow, one per line. Subdomains and subpaths are accepted, and if not provided will be wildcarded.</p>
-					
 					<p>The allowed sites override the blocked sites and can be used to allow specific subdomains or subpaths.</p>
 				</div>
-				
-				<div class="span6">
-					<div class="row">
-						<div class="span3">
-							<textarea class="span3" id="target-block" rows="5"></textarea>
-						</div>
-						
-						<div class="span3">
-							<textarea class="span3" id="target-allow" rows="5"></textarea>
-						</div>
-					</div>
+				<div>
+					Blocked sites<br/>
+					<textarea id="target-block" rows="8"></textarea>
+				</div>
+				<div>
+					Allowed sites<br/>
+					<textarea id="target-allow" rows="8"></textarea>
 				</div>
 			</div>
+
 			
+			<br/>
 			
 			<!-- help -->
 			<div class="page-header">
@@ -102,29 +66,31 @@
 			</div>
 			
 			<ul class="thumbnails">
-				<li class="span4"><div class="thumbnail">
-					<div class="caption"><p>First, add distracting sites to the blocked list.</p></div>
-					<img src="images/tutorial/step-1.png" alt="">
-				</div></li>
+				<li>
+					First, add distracting sites to the blocked list.<br/>
+					<img src="images/tutorial/step-1.png" alt=""/>
+				</li>
 				
-				<li class="span4"><div class="thumbnail">
-					<div class="caption"><p>Attempts to visit them will then be blocked. Meanwhile, the balance will slowly fill up.</p></div>
+				<li>
+					Attempts to visit them will then be blocked. Meanwhile, the balance will slowly fill up.<br/>
 					<img src="images/tutorial/step-2-a.png" alt="">
-					<hr>
+					<br/><br/>
 					<img src="images/tutorial/step-2-b.png" alt="">
-				</div></li>
+				</li>
 				
-				<li class="span4"><div class="thumbnail">
-					<div class="caption"><p>Click an amount (specified in minutes) to unblock all sites for that duration. Enjoy browsing until the meter runs out :)</p></div>
+				<li>
+					Click an amount (specified in minutes) to unblock all sites for that duration. Enjoy browsing until the meter runs out :)<br/>
 					<img src="images/tutorial/step-3.png" alt="">
-				</div></li>
+				</li>
 			</ul>
 			
-			<p>Morphine is a website blocker with a twist. Instead of allotting a certain amount of time each day for using blocked sites, Morphine gives you a "balance" to pull from, which is very slowly filled with minutes. This allows you to use your blocked sites whenever you want for as long as you want – provided you have enough time in your balance. In other words: Regulated Distraction&reg;&trade;!</p>
+			<div>
+				<p>Morphine is a website blocker with a twist. Instead of allotting a certain amount of time each day for using blocked sites, Morphine gives you a "balance" to pull from, which is very slowly filled with minutes. This allows you to use your blocked sites whenever you want for as long as you want – provided you have enough time in your balance. In other words: Regulated Distraction&reg;&trade;!</p>
 			
-			<p>But why take this approach? Well, let's say you're at work and have a standard website blocker turned on. A friend sends you a link to an item on one of your blocked sites, but when you try to access it, turns out you've already used all your daily allotted time up! However if you were using Morphine, your wait would be no more than 10 minutes (by default), since the balance is always slowly being added to.</p>
+				<p>But why take this approach? Well, let's say you're at work and have a standard website blocker turned on. A friend sends you a link to an item on one of your blocked sites, but when you try to access it, turns out you've already used all your daily allotted time up! However if you were using Morphine, your wait would be no more than 10 minutes (by default), since the balance is always slowly being added to.</p>
 			
-			<p>Ready to get started? Using the balance is very easy. Once you've set the options above to your taste, click on the Morphine icon in the toolbar or try to visit a blocked site. A page with a few large buttons with numbers will be displayed – these represent minutes. Click one to add that number to the "meter". Once the meter is used up, the sites will return to being blocked.</p>
+				<p>Ready to get started? Using the balance is very easy. Once you've set the options above to your taste, click on the Morphine icon in the toolbar or try to visit a blocked site. A page with a few large buttons with numbers will be displayed – these represent minutes. Click one to add that number to the "meter". Once the meter is used up, the sites will return to being blocked.</p>
+			</div>
 			
 			
 			<!-- about -->

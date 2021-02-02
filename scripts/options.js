@@ -15,9 +15,9 @@ background._gaq.push(["_trackPageview", "/options"]);
 ///////////////////////////////////////////////////////////////////////////////
 var charge = {
 	$interval: $("#charge-interval"),
-	$intervaltext: $("output[for='charge-interval']"),
+	$intervaltext: $("#charge-interval-output"),
 	$size: $("#charge-size"),
-	$sizetext: $("output[for='charge-size']")
+	$sizetext: $("#charge-size-output")
 };
 
 charge.$interval.change(function (e, real) {
@@ -30,7 +30,7 @@ charge.$interval.change(function (e, real) {
 });
 
 charge.$size.change(function () {
-	charge.$sizetext.text("(+" + this.value + " per charge)");
+	charge.$sizetext.html("(+" + this.value + " per charge)");
 	
 	Data.set("charge-size", this.valueAsNumber);
 });
