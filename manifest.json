@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 	"name": "Morphine",
-	"version": "1.1.1",
+	"version": "1.1.2",
 	"description": "Regulated distraction.",
 	"icons": {
 		"16": "images/icons/16.png",
@@ -16,10 +16,10 @@
 		"default_popup": "popup.html"
 	},
 	"background": {
-		"scripts": ["scripts/errors.js", "scripts/jsuri.js", "scripts/data.js", "scripts/background.js"]
+		"scripts": ["scripts/errors.js", "scripts/Uri.js", "scripts/data.js", "scripts/background.js"]
 	},
 
-	"content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+	"content_security_policy": "script-src 'self'; object-src 'self'",
 
 	"options_ui": {
 		"chrome_style": false,
