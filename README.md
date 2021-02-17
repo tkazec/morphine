@@ -1,3 +1,6 @@
+This project aims to port the below Google Chrome extension to Firefox and then extend it while also supporting compatibility with Chrome.
+
+
 “Regulated distraction.” Productivity for Chrome. https://chrome.google.com/webstore/detail/fbnpehpbojenlldmfcopeajkichnnjpo
 
 ---
@@ -9,6 +12,12 @@ Wishlist:
 * Custom block page messages.
 * Improved incognito support.
 * Improved "disable" support.
+* Add checkbox option to disable changing chrome extension without a shot of.
+  morphine. Likewise it should allow ?? shots to disable.
+* Add option for starting balance -- e.g. every new work session we get 10 min.
+* Add RegEx or wildcard support.
+* Monitor sites most used and with one click can add to blocklist.
+
 
 Ideas:
 
@@ -18,6 +27,8 @@ Ideas:
 * Daily balance reset time.
 * Quick add current domain to block list.
 * Only accrue balance during certain times of the day.
+* Buy more morphine.
+* Show ads on block page to support project?
 
 ---
 
