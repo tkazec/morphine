@@ -17,7 +17,7 @@ html {
 	max-width: 700px;
 }
 
-#target-block, #target-allow {
+#target-block, #target-allow, #target-speed {
 	width: 90%;
 }
 
@@ -41,6 +41,9 @@ label {
 .alert {
 	display: none;
 	margin-top: 9px;
+	margin-bottom: 27px;
+	padding: 20px;
+    background-color: #ddd;
 }
 
 .page-header {
