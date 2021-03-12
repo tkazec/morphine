@@ -1,4 +1,9 @@
-“Regulated distraction.” Productivity for Chrome. https://chrome.google.com/webstore/detail/fbnpehpbojenlldmfcopeajkichnnjpo
+“Regulated distraction” for more productivity
+
+Latest Version on Firefox: https://addons.mozilla.org/en-US/firefox/addon/morphine-regulated-distraction/
+Legacy Version on Chrome: https://chrome.google.com/webstore/detail/fbnpehpbojenlldmfcopeajkichnnjpo
+Source Code Development: https://github.com/jordanmendler/morphine
+
 
 ---
 
@@ -21,4 +26,4 @@ Ideas:
 
 ---
 
-© 2016 [Teddy Cross](https://teddy.io), shared under the [MIT license](https://opensource.org/licenses/MIT).
+Morphine was originally written by [Teddy Cross](https://teddy.io) under the [MIT license](https://opensource.org/licenses/MIT). It has been forked by [The Veloz Group](https://www.thevelozgroup.com) and improved to support Firefox, Firefox Syncing of settings, and more.
