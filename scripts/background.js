@@ -74,6 +74,8 @@ var state = {
 			//checkall();
 		},
 		start: async function () {
+			// todo: run timer every minute, add charge-size to balance if(now >= Data.timeNextBalanceIncrement) { balance += charge-size; Data.timeNextBalanceIncrement += charge-interval; }
+				// OR: timeBalanceIncrementedLastTime,and if(timeBalanceIncrementedLastTime+charge-interval > now) ...
 			clearInterval(state.add.id);
 //			state.add.id = setInterval(state.add.fn, 1000 * 60 * Data.get("charge-interval"));
 			let chargeInterval = await Data.get("charge-interval");
