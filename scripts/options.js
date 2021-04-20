@@ -9,7 +9,7 @@
 		let data = await Data.getAll();
 		console.log('modelToView getAll stop');
 
-		$("#balance-output").html( balanceSecondsToString(data["balance"]) );
+		$("#balance-output").html( misc.balanceSecondsToString(data["balance"]) );
 		
 		//let allowedTill = data["time-till-allowed"] - (new Date()/1000);
 //		let allowedSeconds = await background.state.getAllowedSeconds();
@@ -43,7 +43,7 @@
 		await Data.setAll(data);
 		console.log('viewToModel setAll stop');
 	}
-
+/*
 	function balanceSecondsToString(seconds) {
 		if (seconds < 60) {
 			return seconds + " second" + (seconds > 1 ? 's' : '');
@@ -59,7 +59,7 @@
 		}
 		return hours + " hour" + (hours > 1 ? 's' : '') + " and " + minutes + " minute" + (minutes > 1 ? 's' : '');
 	}
-
+*/
 	function targetArrayToString(arr) {
 		return arr.join("\n");
 	}

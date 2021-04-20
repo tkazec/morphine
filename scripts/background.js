@@ -58,6 +58,10 @@ var state = {
 	add: {
 		id: -1,
 		fn: async function () {
+			if(state.use.id != null) {
+				console.log('state.add.fn skip (user is in spending mode)');
+				return;
+			}
 			var size = await Data.get("charge-size");
 			var balance = await Data.get("balance");
 			var max = await Data.get("charge-max");
@@ -207,6 +211,15 @@ async function init() {
 	await Data.def("target-speed", ['facebook.com', 'twitter.com', 'youtube.com']);
 	await Data.def("target-allow", ['drive.google.com','gmail.com','github.com']);
 	await Data.def("time-till-allowed", 0);
+
+	
+	// recover timer for Spending, if alowedSeconds available
+	if(state.use.id==null) {
+		let allowedSeconds = await state.getAllowedSeconds();
+		if( allowedSeconds > 0 ) {
+			state.use.start();
+		}
+	}
 }
 
 init().then(() => {
@@ -221,6 +234,7 @@ init().then(() => {
 	});
 
 	state.add.start();
+
 });
 
 

@@ -39,17 +39,31 @@ var updatePopup = async function () {
 
 	$balanceState.text(balanceMinutes).toggleClass("badge-info", !!balanceMinutes);
 	$meterState.text(meter).toggleClass("badge-warning", !!meter);
+
+	$usecustom.text("+" + balanceMinutes ); // .parent().prop("disabled",  speed > 1 );
+	//if(balanceMinutes<=1 || balanceMinutes==5 || balanceMinutes==10 || balanceMinutes==30) {
+	if(balanceMinutes<1 || speed>1) {
+		$usecustom.parent().hide();
+	} else {
+		$usecustom.parent().show();
+	}
 	
 	$use.each(function () {
 		let v = parseInt(this.textContent, 10);
 		if( v * speed > balanceMinutes ) {
 			this.disabled = true;
+		} else {
+			this.disabled = false;
 		}
 		// this.disabled = parseInt(this.textContent, 10) > balanceMinutes;
 	});
 	
+	if(speed > 1) {
+		$("#speedball").text("Speed: "+speed+"x").show();
+	} else {
+		$("#speedball").text("").hide();
+	}
 	//$usecustom.text("+" + balanceMinutes).parent().prop("disabled", !balanceMinutes);
-	$usecustom.text("+" + balanceMinutes ).parent().prop("disabled",  speed > 1 );
 	
 //	if (meter && isTab && !loading) {
 	if (allowedSeconds && isTab && !loading) {
@@ -67,6 +81,7 @@ window.update = async function() {
 };
 
 console.log('upd1');
+
 updatePopup().then(function() {
 	console.log('upd2');
 	$("body").on("focus", "*", function () {
@@ -79,13 +94,13 @@ updatePopup().then(function() {
 	});
 	
 	$("#balance-reset").click(async function () {
-		await background.state.resetBalance();
+		//await background.state.resetBalance();
 	});
 	
 	$("#meter-reset").click(async function () {
-		await background.state.resetAllowedTime();
-		//background.state.meter = 1;
-		//background.state.use.fn();
+		//await background.state.resetAllowedTime();
+		////background.state.meter = 1;
+		////background.state.use.fn();
 	});
 });
 
