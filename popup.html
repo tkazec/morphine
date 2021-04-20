@@ -9,33 +9,30 @@
 	<body>
 		<div class="container">
 			<div class="row">
-				<a id="balance-reset" class="span2">
-					<span id="balance-state" class="badge"></span>
-					<span class="muted">Balance &times;</span>
-				</a>
-				
-				<a id="meter-reset" class="span2 text-right">
+				<div id="balance-reset" class="span2">
+					Balance <span id="balance-state" class="badge"></span>
+				</div>
+				<!--
+				<div id="meter-reset" class="span2 text-right">
 					<span class="muted">&times; Meter</span>
-					<span id="meter-state" class="badge"></span>
-				</a>
+					<span id="meter-state" class2="badge"></span>
+				</div>
+				-->
 			</div>
 			
-			<button class="btn btn-large btn-tall span4"><span class="label label-success">+1</span></button>
-			
-			<div class="row">
-				<div class="span2">
-					<button class="btn btn-large btn-tall span2"><span class="label label-success">+3</span></button>
-				</div>
-				
-				<div class="span2">
-					<button class="btn btn-large span2"><span class="label label-success">+5</span></button>
-					
-					<button class="btn btn-large span2"><span id="use-custom" class="label label-success"></span></button>
-				</div>
+			<div class="buttons">
+				<button class="btn btn-large btn-tall span2"><span class="label label-success">+1</span></button>
+				<button class="btn btn-large btn-tall span2"><span class="label label-success">+3</span></button>
+				<button class="btn btn-large btn-tall span2"><span class="label label-success">+5</span></button>
+				<button class="btn btn-large btn-tall span2"><span class="label label-success">+10</span></button>
+				<button class="btn btn-large btn-tall span2"><span class="label label-success">+30</span></button>
+				<button class="btn btn-large btn-tall span2" id="but-custom"><span id="use-custom" class="label label-success"></span></button>
 			</div>
 			
-			<p class="muted" id="url"></p>
 		</div>
+
+		<div id="url" class="row"></div>
+		<div id="speedball" class2="row"></div>
 		
 		<script src="scripts/errors.js"></script>
 		<script src="scripts/jquery.js"></script>

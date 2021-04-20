@@ -4,8 +4,13 @@
 // Setup
 ///////////////////////////////////////////////////////////////////////////////
 var background = chrome.extension.getBackgroundPage();
+
 var isTab = location.search && JSON.parse(decodeURIComponent(location.search.slice(1)));
 var loading = false;
+console.log('popup 1', location.search, isTab);
+
+let matchType = isTab.matchType;
+let speed = isTab.speed;
 
 var $balanceState = $("#balance-state");
 var $balanceReset = $("#balance-reset");
@@ -19,64 +24,85 @@ if (isTab) {
 	$("#url").text(isTab.url).show();
 }
 
-background._gaq.push(["_trackPageview", isTab ? "/tab" : "/popup"]);
+var updatePopup = async function () {
+//	if( matchType=='speed' ) {
+//		speed = await background.state.getChargeDefaultSpeed();
+//	}
+	let balance = await background.state.getBalance();
+	let allowedSeconds = await background.state.getAllowedSeconds();
 
+	var balanceMinutes = Math.floor(balance/60);
+	//var meter = background.state.meter;
+	let meter = Math.floor(allowedSeconds / 60);
 
-///////////////////////////////////////////////////////////////////////////////
-// Sync
-///////////////////////////////////////////////////////////////////////////////
-var update = window.update = function () {
-	var balance = background.state.balance;
-	var meter = background.state.meter;
-	
-	$balanceState.text(balance).toggleClass("badge-info", !!balance);
+	console.log('popup balance=',balance,'matchType=',matchType,'speed=',speed,'allowedSeconds=',allowedSeconds, 'meter=',meter,'loading=',loading,'isTab=',isTab);
+
+	$balanceState.text(balanceMinutes).toggleClass("badge-info", !!balanceMinutes);
 	$meterState.text(meter).toggleClass("badge-warning", !!meter);
+
+	$usecustom.text("+" + balanceMinutes ); // .parent().prop("disabled",  speed > 1 );
+	//if(balanceMinutes<=1 || balanceMinutes==5 || balanceMinutes==10 || balanceMinutes==30) {
+	if(balanceMinutes<1 || speed>1) {
+		$usecustom.parent().hide();
+	} else {
+		$usecustom.parent().show();
+	}
 	
 	$use.each(function () {
-		this.disabled = parseInt(this.textContent, 10) > balance;
+		let v = parseInt(this.textContent, 10);
+		if( v * speed > balanceMinutes ) {
+			this.disabled = true;
+		} else {
+			this.disabled = false;
+		}
+		// this.disabled = parseInt(this.textContent, 10) > balanceMinutes;
 	});
 	
-	$usecustom.text("+" + balance).parent().prop("disabled", !balance);
+	if(speed > 1) {
+		$("#speedball").text("Speed: "+speed+"x").show();
+	} else {
+		$("#speedball").text("").hide();
+	}
+	//$usecustom.text("+" + balanceMinutes).parent().prop("disabled", !balanceMinutes);
 	
-	if (meter && isTab && !loading) {
+//	if (meter && isTab && !loading) {
+	if (allowedSeconds && isTab && !loading) {
+		console.log('updatePopup location.replace', isTab.url);
 		location.replace(isTab.url);
-		
 		loading = true;
 	}
+	console.log('upd1-1');
+
 };
 
-update();
+window.update = async function() {
+	console.log('window.update', isTab, isTab.url);
+	await updatePopup();
+};
 
+console.log('upd1');
 
-///////////////////////////////////////////////////////////////////////////////
-// Events
-///////////////////////////////////////////////////////////////////////////////
-$("body").on("focus", "*", function () {
-	!isTab && this.blur();
+updatePopup().then(function() {
+	console.log('upd2');
+	$("body").on("focus", "*", function () {
+		!isTab && this.blur();
+		$("body").off("focus", "*");
+		
+	}).on("click", "button", async function () {
+		var amount = parseInt(this.textContent, 10);
+		await background.state.useBalance( amount, speed );
+	});
 	
-	$("body").off("focus", "*");
-}).on("click", "button", function () {
-	var amount = parseInt(this.textContent, 10);
+	$("#balance-reset").click(async function () {
+		//await background.state.resetBalance();
+	});
 	
-	background.state.balance -= amount;
-	background.state.meter += amount;
-	background.state.use.start();
-	
-	background._gaq.push(["_trackEvent", "Balance", "Use", isTab ? "tab" : "popup", amount]);
+	$("#meter-reset").click(async function () {
+		//await background.state.resetAllowedTime();
+		////background.state.meter = 1;
+		////background.state.use.fn();
+	});
 });
 
-$("#balance-reset").click(function () {
-	background.state.balance = 0;
-	background.state.sync();
-	
-	background._gaq.push(["_trackEvent", "Balance", "Reset", isTab ? "tab" : "popup"]);
-});
-
-$("#meter-reset").click(function () {
-	background.state.meter = 1;
-	background.state.use.fn();
-	
-	background._gaq.push(["_trackEvent", "Meter", "Reset", isTab ? "tab" : "popup"]);
-});
 
 })();

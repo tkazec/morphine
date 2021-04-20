@@ -4,97 +4,135 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Morphine options</title>
-		<link rel="stylesheet" href="styles/bootstrap.css">
-		<link rel="stylesheet" href="styles/bootstrap-responsive.css">
 		<link rel="stylesheet" href="styles/options.css">
 	</head>
 	<body>
 		<div class="container">
+
 			<!-- first install message -->
 			<div class="alert alert-success">
-				<strong>Welcome!</strong> Looks like you successfully installed Morphine. Thanks for checking it out! Please take a minute to review its options below for an optimal experience, and once you've used it for a bit consider reviewing it on the <a href="https://chrome.google.com/webstore/detail/morphine/fbnpehpbojenlldmfcopeajkichnnjpo">Chrome Web Store</a>. Have fun!
+				<h2>Welcome!</h2>
+				<p>
+					Looks like you successfully installed Morphine.
+					Thanks for checking it out! Please take a minute to review its options below for an optimal experience, and once you've used it for a bit
+					consider reviewing it on the <a href="https://addons.mozilla.org/en-US/firefox/addon/morphine-regulated-distraction/">Firefox Add-ons Site</a>.
+					Have fun!
+				</p>
 			</div>
 			
 			
 			<!-- options -->
 			<div class="page-header">
-				<h2>Options</h2>
+				<h2>Balance: <span id="balance-output">0 minutes</span></h2>
+				<p id="allowed-till-output">&nbsp;</p>
 			</div>
-			
-			<div class="row">
-				<div class="span6">
-					<h4>Charging</h4>
+
+			<div>
+				<div>
+					<h4>Earning</h4>
 				</div>
-				
-				<div class="span6">
-					<div class="row">
-						<div class="span3">
-							<label for="charge-interval">Interval <output for="charge-interval" class="muted"></output></label>
-						</div>
-						
-						<div class="span3">
-							<label for="charge-size">Size <output for="charge-size" class="muted"></output></label>
-						</div>
-					</div>
+				<div>
+					<p>Select how fast your balance is re-charged.</p>
+					<p>
+						Every 
+						<select id="charge-interval">
+							<option value="60">1 minute</option>
+							<option value="300">5 minutes</option>
+							<option value="600">10 minutes</option>
+							<option value="900">15 minutes</option>
+							<option value="1200">20 minutes</option>
+							<option value="1500">25 minutes</option>
+							<option value="1800">30 minutes</option>
+							<option value="2700">45 minutes</option>
+							<option value="3600">1 hour</option>
+							<option value="7200">2 hours</option>
+							<option value="14400">4 hours</option>
+						</select> 
+						you earn  
+						<select id="charge-size">
+							<option value="60">+1 minute</option>
+							<option value="300">+5 minutes</option>
+							<option value="600">+10 minutes</option>
+							<option value="900">+15 minutes</option>
+							<option value="1200">+20 minutes</option>
+							<option value="1500">+25 minutes</option>
+							<option value="1800">+30 minutes</option>
+							<option value="2700">+45 minutes</option>
+						</select> 
+						to your balance.
+					</p>
+					<p>
+						Maximum balance is 
+						<select id="charge-max">
+							<option value="0">unlimited</option>
+							<option value="1800">30 minutes</option>
+							<option value="3600">1 hour</option>
+							<option value="7200">2 hours</option>
+							<option value="10800">3 hours</option>
+							<option value="14400">4 hours</option>
+							<option value="28800">8 hours</option>
+						</select> 
+					</p>
+				</div>
+
+			</div>
+
+			<br/>
+
+			<div>
+				<div>
+					<h4>Spending</h4>
+				</div>
+				<div>
+					<p>
+						Limited sites spend 1 minute of balance for every 1 minute you use them.
+						These are sites you want to limit your use of without completely cutting out completely.
+						For example, sites where you often procrastinate but also find them useful.
+					</p>
+					<p>
+						Speedball sites spend balance
+						<select id="charge-speed">
+							<option value="1.25">1.25x</option>
+							<option value="1.5">1.5x</option>
+							<option value="1.75">1.75x</option>
+							<option value="2">2x</option>
+							<option value="2.5">2.5x</option>
+							<option value="3">3x</option>
+							<option value="4">4x</option>
+							<option value="5">5x</option>
+							<option value="10">10x</option>
+						</select> times faster than Limited sites.
+						These are sites you'd like to stop using completely or greatly greatly reduce your use of, but you are too
+						addicted to stop using completely.
+						For example, cat video sites that only waste time and are not at all productive.
+					</p>
+					<p>
+						Allowed sites do not spend any balance.
+						They override Limited and Speedball sites and can be used to allow specific subdomains or subpaths.
+						These are sites that are completely productive, on which you would happily spend all day long.
+						For example, a site that you only use for working or studying in school.
+					</p>
+				</div>
+			
+				<div>
+					<p>Add sites one per line. Subdomains and subpaths are accepted, and if not provided will be wildcarded.</p>
+				</div>
+				<div>
+					Limited sites<br/>
+					<textarea id="target-block" rows="8"></textarea>
+				</div>
+				<div>
+					Speedball sites<br/>
+					<textarea id="target-speed" rows="8"></textarea>
+				</div>
+				<div>
+					Allowed sites<br/>
+					<textarea id="target-allow" rows="8"></textarea>
 				</div>
 			</div>
+
 			
-			<div class="row">
-				<div class="span6">
-					<p>Set the optimal time balance charge rate for you! With the default settings, +1 minute will be given every 10 minutes, but it can be adjusted for optimal productivity, distraction, and attention span levels.</p>
-				</div>
-				
-				<div class="span6">
-					<div class="row">
-						<div class="span3">
-							<input type="range" class="span3" id="charge-interval" min="10" max="60" step="5">
-						</div>
-						
-						<div class="span3">
-							<input type="range" class="span3" id="charge-size" min="1" max="15" step="1">
-						</div>
-					</div>
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="span6">
-					<h4>Blocking</h4>
-				</div>
-				
-				<div class="span6">
-					<div class="row">
-						<div class="span3">
-							<label for="target-block">Blocked sites</label>
-						</div>
-						
-						<div class="span3">
-							<label for="target-allow">Allowed sites</label>
-						</div>
-					</div>
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="span6">
-					<p>Add sites to block and (optionally) allow, one per line. Subdomains and subpaths are accepted, and if not provided will be wildcarded.</p>
-					
-					<p>The allowed sites override the blocked sites and can be used to allow specific subdomains or subpaths.</p>
-				</div>
-				
-				<div class="span6">
-					<div class="row">
-						<div class="span3">
-							<textarea class="span3" id="target-block" rows="5"></textarea>
-						</div>
-						
-						<div class="span3">
-							<textarea class="span3" id="target-allow" rows="5"></textarea>
-						</div>
-					</div>
-				</div>
-			</div>
-			
+			<br/>
 			
 			<!-- help -->
 			<div class="page-header">
@@ -102,29 +140,31 @@
 			</div>
 			
 			<ul class="thumbnails">
-				<li class="span4"><div class="thumbnail">
-					<div class="caption"><p>First, add distracting sites to the blocked list.</p></div>
-					<img src="images/tutorial/step-1.png" alt="">
-				</div></li>
+				<li>
+					First, add distracting sites to the Limited or Speedbal list.<br/>
+					<img src="images/tutorial/step-1.png" alt=""/>
+				</li>
 				
-				<li class="span4"><div class="thumbnail">
-					<div class="caption"><p>Attempts to visit them will then be blocked. Meanwhile, the balance will slowly fill up.</p></div>
+				<li>
+					Attempts to visit them will then be limited. Meanwhile, the balance will slowly fill up.<br/>
 					<img src="images/tutorial/step-2-a.png" alt="">
-					<hr>
+					<br/><br/>
 					<img src="images/tutorial/step-2-b.png" alt="">
-				</div></li>
+				</li>
 				
-				<li class="span4"><div class="thumbnail">
-					<div class="caption"><p>Click an amount (specified in minutes) to unblock all sites for that duration. Enjoy browsing until the meter runs out :)</p></div>
+				<li>
+					Click an amount (specified in minutes) to Allow all sites for that duration. Enjoy browsing until the meter runs out :)<br/>
 					<img src="images/tutorial/step-3.png" alt="">
-				</div></li>
+				</li>
 			</ul>
 			
-			<p>Morphine is a website blocker with a twist. Instead of allotting a certain amount of time each day for using blocked sites, Morphine gives you a "balance" to pull from, which is very slowly filled with minutes. This allows you to use your blocked sites whenever you want for as long as you want – provided you have enough time in your balance. In other words: Regulated Distraction&reg;&trade;!</p>
+			<div>
+				<p>Morphine is a website blocker with a twist. Instead of allotting a certain amount of time each day for using blocked sites, Morphine gives you a "balance" to pull from, which is very slowly filled with minutes. This allows you to use your blocked sites whenever you want for as long as you want – provided you have enough time in your balance. In other words: Regulated Distraction&reg;&trade;!</p>
 			
-			<p>But why take this approach? Well, let's say you're at work and have a standard website blocker turned on. A friend sends you a link to an item on one of your blocked sites, but when you try to access it, turns out you've already used all your daily allotted time up! However if you were using Morphine, your wait would be no more than 10 minutes (by default), since the balance is always slowly being added to.</p>
+				<p>But why take this approach? Well, let's say you're at work and have a standard website blocker turned on. A friend sends you a link to an item on one of your blocked sites, but when you try to access it, turns out you've already used all your daily allotted time up! However if you were using Morphine, your wait would be no more than 10 minutes (by default), since the balance is always slowly being added to.</p>
 			
-			<p>Ready to get started? Using the balance is very easy. Once you've set the options above to your taste, click on the Morphine icon in the toolbar or try to visit a blocked site. A page with a few large buttons with numbers will be displayed – these represent minutes. Click one to add that number to the "meter". Once the meter is used up, the sites will return to being blocked.</p>
+				<p>Ready to get started? Using the balance is very easy. Once you've set the options above to your taste, click on the Morphine icon in the toolbar or try to visit a blocked site. A page with a few large buttons with numbers will be displayed – these represent minutes. Click one to add that number to the "meter". Once the meter is used up, the sites will return to being blocked.</p>
+			</div>
 			
 			
 			<!-- about -->
@@ -163,6 +203,7 @@
 		</div>
 		
 		<script src="scripts/errors.js"></script>
+		<script src="scripts/misc.js"></script>
 		<script src="scripts/jquery.js"></script>
 		<script src="scripts/data.js"></script>
 		<script src="scripts/options.js"></script>

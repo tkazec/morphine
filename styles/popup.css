@@ -17,13 +17,27 @@ button {
 }
 
 .container {
-	width: 300px;
+	width: 450px;
 }
 
-#url {
+#url, #speedball {
 	display: none;
 	overflow: hidden;
 	text-align: center;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+
+	margin-top: 10px;
+}
+#speedball {
+	font-weight: bold;
+}
+.balance {
+	padding-top: 8px;
+	padding-bottom: 8px;
+	font-size: 16px;
+}
+
+.buttons button {
+	margin-right: 10px !important;
 }

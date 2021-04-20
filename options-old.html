@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Morphine options</title>
+		<link rel="stylesheet" href="styles/options.css">
+	</head>
+	<body>
+		<div class="container">
+			<!-- first install message -->
+			<div class="alert alert-success">
+				<p>
+					<strong>Welcome!</strong> Looks like you successfully installed Morphine. Thanks for checking it out! 
+					Please take a minute to review its options below for an optimal experience, and once you've used it for a bit 
+					consider reviewing it on the <a href="https://chrome.google.com/webstore/detail/morphine/fbnpehpbojenlldmfcopeajkichnnjpo">Chrome Web Store</a>. Have fun!
+				</p>
+			</div>
+			
+			
+			<!-- options -->
+			<div class="page-header">
+				<h2>Options</h2>
+			</div>
+			
+			<div>
+				<div>
+					<h4>Charging</h4>
+				</div>
+				<div>
+					<p>Set the optimal time balance charge rate for you! With the default settings, +1 minute will be given every 10 minutes, but it can be adjusted for optimal productivity, distraction, and attention span levels.</p>
+				</div>
+
+				<div>
+					Interval <span id="charge-interval-output">&nbsp;</span><br/>
+					<input type="range" id="charge-interval" min="10" max="60" step="5">
+				</div>
+				<div>
+					Size <span id="charge-size-output">&nbsp;</span><br/>
+					<input type="range" id="charge-size" min="1" max="15" step="1">
+				</div>
+			</div>
+
+			<br/>
+
+			<div>
+				<div>
+					<h4>Blocking</h4>
+				</div>
+				<div>
+					<p>Add sites to block and (optionally) allow, one per line. Subdomains and subpaths are accepted, and if not provided will be wildcarded.</p>
+					<p>The allowed sites override the blocked sites and can be used to allow specific subdomains or subpaths.</p>
+				</div>
+				<div>
+					Blocked sites<br/>
+					<textarea id="target-block" rows="8"></textarea>
+				</div>
+				<div>
+					Allowed sites<br/>
+					<textarea id="target-allow" rows="8"></textarea>
+				</div>
+			</div>
+
+			
+			<br/>
+			
+			<!-- help -->
+			<div class="page-header">
+				<h2>Guide</h2>
+			</div>
+			
+			<ul class="thumbnails">
+				<li>
+					First, add distracting sites to the blocked list.<br/>
+					<img src="images/tutorial/step-1.png" alt=""/>
+				</li>
+				
+				<li>
+					Attempts to visit them will then be blocked. Meanwhile, the balance will slowly fill up.<br/>
+					<img src="images/tutorial/step-2-a.png" alt="">
+					<br/><br/>
+					<img src="images/tutorial/step-2-b.png" alt="">
+				</li>
+				
+				<li>
+					Click an amount (specified in minutes) to unblock all sites for that duration. Enjoy browsing until the meter runs out :)<br/>
+					<img src="images/tutorial/step-3.png" alt="">
+				</li>
+			</ul>
+			
+			<div>
+				<p>Morphine is a website blocker with a twist. Instead of allotting a certain amount of time each day for using blocked sites, Morphine gives you a "balance" to pull from, which is very slowly filled with minutes. This allows you to use your blocked sites whenever you want for as long as you want – provided you have enough time in your balance. In other words: Regulated Distraction&reg;&trade;!</p>
+			
+				<p>But why take this approach? Well, let's say you're at work and have a standard website blocker turned on. A friend sends you a link to an item on one of your blocked sites, but when you try to access it, turns out you've already used all your daily allotted time up! However if you were using Morphine, your wait would be no more than 10 minutes (by default), since the balance is always slowly being added to.</p>
+			
+				<p>Ready to get started? Using the balance is very easy. Once you've set the options above to your taste, click on the Morphine icon in the toolbar or try to visit a blocked site. A page with a few large buttons with numbers will be displayed – these represent minutes. Click one to add that number to the "meter". Once the meter is used up, the sites will return to being blocked.</p>
+			</div>
+			
+			
+			<!-- about -->
+			<div class="page-header">
+				<h2>About</h2>
+			</div>
+			
+			<h4>Guarantee</h4>
+			<p>Under no circumstances will I sell, monetize, or otherwise compromise Morphine. The complete source code is publicly available on <a href="https://github.com/tkazec/morphine">GitHub</a>, shared under the <a href="https://opensource.org/licenses/MIT">MIT license</a>. Thank you. – <a href="https://teddy.io">Teddy Cross</a></p>
+			
+			<h4>Contribute</h4>
+			<p>Morphine needs your help to improve! Are you an engineer or designer? Please check out the wishlist below, and <a href="mailto:teddy@teddy.io">get in touch</a>. If not, you can still help out by leaving a review on the <a href="https://chrome.google.com/webstore/detail/morphine/fbnpehpbojenlldmfcopeajkichnnjpo">Chrome Web Store</a>.</p>
+			
+			<h4>Wishlist</h4>
+			<ul>
+				<li>Branding: Logo and Chrome Web Store assets.</li>
+				<li>Localization: Support and translations.</li>
+				<li>Custom block page messages.</li>
+				<li>Improved incognito support.</li>
+				<li>Improved "disable" support.</li>
+			</ul>
+			
+			
+			<!-- news -->
+			<div class="page-header">
+				<h2>News</h2>
+			</div>
+			
+			<h4>1.1.0 <small>2016-10-17</small></h4>
+			<ul>
+				<li>Three years later...</li>
+				<li>Updated the options page.</li>
+				<li>Removed error tracking, for now.</li>
+				<li>Added balance and meter reset buttons.</li>
+			</ul>
+		</div>
+		
+		<script src="scripts/errors.js"></script>
+		<script src="scripts/jquery.js"></script>
+		<script src="scripts/data.js"></script>
+		<script src="scripts/options.js"></script>
+	</body>
+</html>
