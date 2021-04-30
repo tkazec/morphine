@@ -21,12 +21,16 @@ var state = {
 
 	useBalance: async function(amount, speed) {
 		let balance = await Data.get("balance");
+		let tta = await Data.get("time-till-allowed");
+		let now = Math.floor(new Date()/1000);
+		if(tta < now) tta = now;
 		
 		let newBalance = balance - amount * 60 * speed;
 		if( newBalance < 0 ) newBalance = 0;
 		await Data.set("balance", newBalance);
 
-		let timeTillAllowed = Math.floor(new Date()/1000) + amount * 60; // allow for Amount minutes, but decrease Balance for Amount*speed minutes
+		//let timeTillAllowed = Math.floor(new Date()/1000) + amount * 60; // allow for Amount minutes, but decrease Balance for Amount*speed minutes
+		let timeTillAllowed = tta + amount * 60; // allow for Amount minutes, but decrease Balance for Amount*speed minutes
 		await Data.set("time-till-allowed", timeTillAllowed);
 
 		console.log('useBalance amount='+amount+' speed='+speed+' timeTillAllowed -> '+timeTillAllowed+' balance '+balance+' -> '+newBalance+' now='+Math.floor(new Date()/1000));

@@ -11,6 +11,7 @@ console.log('popup 1', location.search, isTab);
 
 let matchType = isTab.matchType;
 let speed = isTab.speed;
+if(! speed) speed = 1; // popup, shown when clicked on icon, do not have parameters
 
 var $balanceState = $("#balance-state");
 var $balanceReset = $("#balance-reset");
@@ -91,6 +92,7 @@ updatePopup().then(function() {
 	}).on("click", "button", async function () {
 		var amount = parseInt(this.textContent, 10);
 		await background.state.useBalance( amount, speed );
+		await updatePopup();
 	});
 	
 	$("#balance-reset").click(async function () {
